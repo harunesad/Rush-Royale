@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Placement : MonoBehaviour
 {
+    public static Placement instance;
     [SerializeField] LayerMask checkLayers;
     [SerializeField] LayerMask layerMask;
 
@@ -14,9 +15,14 @@ public class Placement : MonoBehaviour
     public GameObject objMove;
 
     [SerializeField] float checkRadius;
-    float posY = 0.5f;
+    float posY = 0.25f;
+    float posX, posZ;
     float firstPosX, firstPosZ;
     float lastPosX, lastPosZ;
+    private void Awake()
+    {
+        instance = this;
+    }
     void Update()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius, checkLayers);
@@ -26,7 +32,11 @@ public class Placement : MonoBehaviour
             nearObject = item.transform;
             break;
         }
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            posX = transform.position.x;
+            posZ = transform.position.z;
+        }
         if (Input.GetMouseButton(0) && isClick)
         {
             mousePos = Input.mousePosition;
@@ -37,19 +47,26 @@ public class Placement : MonoBehaviour
             {
                 firstPosX = hit.point.x;
                 firstPosZ = hit.point.z;
-                firstPosX = Math.Clamp(firstPosX, -2.565f, 2.565f);
-                firstPosZ = Math.Clamp(firstPosZ, -3, 2.125f);
+                firstPosX = Math.Clamp(firstPosX, -1.025f, 1.025f);
+                firstPosZ = Math.Clamp(firstPosZ, -3, -1.975f);
 
                 objMove.transform.position = new Vector3(firstPosX, posY, firstPosZ);
             }
         }
-        if (Input.GetMouseButtonUp(0) )
+        if (Input.GetMouseButtonUp(0))
         {
-            lastPosX = nearObject.position.x;
-            lastPosZ = nearObject.position.z;  
-
-            objMove.transform.position = new Vector3(lastPosX, posY, lastPosZ);
             isClick = false;
+            if (nearObject.GetComponent<Trigger>().isEmpty)
+            {
+                lastPosX = nearObject.position.x;
+                lastPosZ = nearObject.position.z;
+
+                objMove.transform.position = new Vector3(lastPosX, 0.225f, lastPosZ);
+            }
+            else
+            {
+                objMove.transform.position = new Vector3(posX, 0.225f, posZ);
+            }
         }
     }
     private void OnMouseDown()

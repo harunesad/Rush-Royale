@@ -12,13 +12,14 @@ public class GridManager : MonoBehaviour
     [Space(10)]
     [Header("VerticalEdge")]
     [SerializeField] float verticalEdgeZStart;
-    [SerializeField] int EdgeColumnLength, EdgeRowLength;
+    [SerializeField] int horizontalEdgeColumnLength, horizontalEdgeRowLength;
     [SerializeField] float verticalEdgeSpace;
     float verticalEdgeXStart = 0;
     [Space(10)]
     [Header("HorizontalEdge")]
     [SerializeField] float horizontalEdgeXStart;
     [SerializeField] float horizontalEdgeZStart;
+    [SerializeField] int verticalEdgeColumnLength, verticalEdgeRowLength;
     [SerializeField] float horizontalEdgeSpace;
     [Space(10)]
     [Header("Prefab")]
@@ -29,23 +30,27 @@ public class GridManager : MonoBehaviour
     {
         for (int i = 0; i < planeColumnLength * planeRowLength; i++)
         {
-            var ground = Instantiate(plane, new Vector3(planeXStart + (planeSpace * (i % planeColumnLength)),0 , planeZStart + (planeSpace * (i / planeRowLength))), Quaternion.identity);
+            var ground = Instantiate(plane, new Vector3(planeXStart + (planeSpace * (i % planeColumnLength)),0 , planeZStart + (planeSpace * (i % planeRowLength))), Quaternion.identity);
             ground.layer = 3;
             ground.transform.parent = gameObject.transform;
+            SpawnSystem.instance.spawnPoints.Add(ground);
+            ground.AddComponent<Trigger>();
         }
 
-        for (int i = 0; i < EdgeColumnLength * EdgeRowLength; i++)
+        for (int i = 0; i < horizontalEdgeColumnLength * horizontalEdgeRowLength; i++)
         {
-            var side = Instantiate(edgeVertical, new Vector3(verticalEdgeXStart, 0.001f, verticalEdgeZStart + (verticalEdgeSpace * (i / EdgeRowLength))), Quaternion.identity);
+            var side = Instantiate(edgeVertical, new Vector3(verticalEdgeXStart, 0.001f, verticalEdgeZStart + (verticalEdgeSpace * (i % horizontalEdgeRowLength))), Quaternion.identity);
             //side.layer = 3;
             side.transform.parent = gameObject.transform;
         }
 
-        for (int i = 0; i < EdgeColumnLength * EdgeRowLength; i++)
+        for (int i = 0; i < verticalEdgeColumnLength * verticalEdgeRowLength; i++)
         {
-            var side = Instantiate(horizontalEdge, new Vector3(horizontalEdgeXStart + ((horizontalEdgeSpace) * (i / EdgeRowLength)), 0.001f, horizontalEdgeZStart), horizontalEdge.transform.rotation);
+            var side = Instantiate(horizontalEdge, new Vector3(horizontalEdgeXStart + ((horizontalEdgeSpace) * (i % verticalEdgeRowLength)), 0.001f, horizontalEdgeZStart), horizontalEdge.transform.rotation);
             //side.layer = 3;
             side.transform.parent = gameObject.transform;
         }
+        transform.localScale = new Vector3(0.5f, 1, 0.5f);
+        transform.position = new Vector3(0, 0, -1.5f);
     }
 }
