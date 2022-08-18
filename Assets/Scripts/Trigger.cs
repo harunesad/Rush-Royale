@@ -5,9 +5,10 @@ using UnityEngine;
 public class Trigger : MonoBehaviour
 {
     public bool isEmpty = true;
+    LayerMask mask;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !Placement.instance.isClick)
+        if (!other.gameObject.CompareTag("Untagged") && !Placement.instance.isClick)
         {
             isEmpty = false;
             Debug.Log("a");
@@ -19,7 +20,7 @@ public class Trigger : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Untagged"))
         {
             isEmpty = true;
             Debug.Log(isEmpty);

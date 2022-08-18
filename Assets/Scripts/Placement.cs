@@ -19,6 +19,8 @@ public class Placement : MonoBehaviour
     float posX, posZ;
     float firstPosX, firstPosZ;
     float lastPosX, lastPosZ;
+
+    int tagCount;
     private void Awake()
     {
         instance = this;
@@ -56,16 +58,35 @@ public class Placement : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isClick = false;
+            lastPosX = nearObject.position.x;
+            lastPosZ = nearObject.position.z;
             if (nearObject.GetComponent<Trigger>().isEmpty)
             {
-                lastPosX = nearObject.position.x;
-                lastPosZ = nearObject.position.z;
-
+                Debug.Log("d");
                 objMove.transform.position = new Vector3(lastPosX, 0.225f, lastPosZ);
             }
             else
             {
-                objMove.transform.position = new Vector3(posX, 0.225f, posZ);
+                if (!objMove.gameObject.GetComponent<ObjectCrash>().isMerge)
+                {
+                    Debug.Log("i");
+                    objMove.transform.position = new Vector3(posX, 0.225f, posZ);
+                }
+                else
+                {
+                    Debug.Log("F");
+                    tagCount = int.Parse(objMove.tag);
+                    for (int i = 0; i < SpawnSystem.instance.levelObj.Count; i++)
+                    {
+                        if (objMove.gameObject.tag == SpawnSystem.instance.levelObj[i].tag)
+                        {
+                            Debug.Log("s");
+                            Destroy(objMove.gameObject);
+                            Destroy(ObjectCrash.Instance.crashObj);
+                            Instantiate(SpawnSystem.instance.levelObj[i + 1], new Vector3(lastPosX, 0.225f, lastPosZ), transform.rotation);
+                        }
+                    }
+                }
             }
         }
     }
