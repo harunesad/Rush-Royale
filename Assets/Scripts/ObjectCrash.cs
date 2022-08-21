@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,24 +7,53 @@ public class ObjectCrash : MonoBehaviour
     public static ObjectCrash Instance;
     public bool isMerge = false;
     public GameObject crashObj;
+    public GameObject near;
+    Transform nearObj;
+    [SerializeField] LayerMask checkLayers;
     private void Awake()
     {
         Instance = this;
     }
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (gameObject.tag == other.tag)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, Placement.instance.checkRadius, checkLayers);
+        Array.Sort(colliders, new DistanceCompare(transform));
+        foreach (var item in colliders)
         {
-            crashObj = gameObject;
-            isMerge = true;
+            nearObj = item.transform;
+            near = nearObj.gameObject;
+            break;
         }
-        else
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (gameObject.GetComponent<Placement>().isClick)
         {
-            isMerge = false;
+            if (gameObject.tag == other.tag)
+            {
+                if (crashObj == null)
+                {
+                    crashObj = other.gameObject;
+                }
+                if (crashObj != near)
+                {
+                    //isMerge = true;
+                    crashObj = null;
+                    Debug.Log("sadsasda");
+                }
+                //crashObj = null;
+
+                isMerge = true;
+            }
+            else
+            {
+                isMerge = false;
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
         isMerge = false;
+        crashObj = null;
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4830915018658505852}
   - component: {fileID: 8430480341813995790}
   - component: {fileID: -2823573228636901310}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerOne
   m_TagString: 1
   m_Icon: {fileID: 0}
@@ -151,3 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMerge: 0
+  crashObj: {fileID: 0}
+  near: {fileID: 0}
+  checkLayers:
+    serializedVersion: 2
+    m_Bits: 64

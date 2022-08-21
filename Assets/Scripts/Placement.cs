@@ -5,8 +5,8 @@ using UnityEngine;
 public class Placement : MonoBehaviour
 {
     public static Placement instance;
-    [SerializeField] LayerMask checkLayers;
-    [SerializeField] LayerMask layerMask;
+    public LayerMask checkLayers;
+    public LayerMask layerMask;
 
     Transform nearObject;
     public Vector3 mousePos;
@@ -14,7 +14,7 @@ public class Placement : MonoBehaviour
     public bool isClick = false;
     public GameObject objMove;
 
-    [SerializeField] float checkRadius;
+    public float checkRadius;
     float posY = 0.25f;
     float posX, posZ;
     float firstPosX, firstPosZ;
@@ -57,6 +57,7 @@ public class Placement : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            objMove.gameObject.layer = 6;
             isClick = false;
             lastPosX = nearObject.position.x;
             lastPosZ = nearObject.position.z;
@@ -80,10 +81,12 @@ public class Placement : MonoBehaviour
                     {
                         if (objMove.gameObject.tag == SpawnSystem.instance.levelObj[i].tag)
                         {
-                            Debug.Log("s");
-                            Destroy(objMove.gameObject);
-                            Destroy(ObjectCrash.Instance.crashObj);
+                            //Debug.Log(ObjectCrash.Instance.crashObj.gameObject.transform.position);
+                            //Destroy(ObjectCrash.Instance.crashObj.gameObject);
                             Instantiate(SpawnSystem.instance.levelObj[i + 1], new Vector3(lastPosX, 0.225f, lastPosZ), transform.rotation);
+                            Destroy(objMove.gameObject);
+                            //Destroy(ObjectCrash.Instance.crashObj.GetComponent<Placement>().objMove.gameObject);
+                            Destroy(objMove.gameObject.GetComponent<ObjectCrash>().crashObj.gameObject);
                         }
                     }
                 }
@@ -92,6 +95,7 @@ public class Placement : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        objMove.gameObject.layer = 0;
         isClick = true;
     }
 }
