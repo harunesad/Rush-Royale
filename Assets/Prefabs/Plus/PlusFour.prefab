@@ -116,9 +116,9 @@ GameObject:
   - component: {fileID: 4830915018658505852}
   - component: {fileID: 8430480341813995790}
   - component: {fileID: -2823573228636901310}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: PlusFour
-  m_TagString: '*'
+  m_TagString: 4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,10 +236,14 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
+  objLayer:
+    serializedVersion: 2
+    m_Bits: 0
   mousePos: {x: 0, y: 0, z: 0}
   isClick: 0
   objMove: {fileID: 8430480341813995787}
   checkRadius: 10
+  myLayer: 0
 --- !u!114 &-2823573228636901310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,11 +257,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMerge: 0
+  isCrash: 0
   crashObj: {fileID: 0}
   near: {fileID: 0}
   checkLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
 --- !u!1 &8671478722121472596
 GameObject:
   m_ObjectHideFlags: 0

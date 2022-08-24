@@ -22,10 +22,10 @@ TagManager:
   - Player
   - Star
   - Plus
-  - 
-  - 
-  - 
-  - 
+  - Minus
+  - StarDefault
+  - PlusDefault
+  - MinusDefault
   - 
   - 
   - 

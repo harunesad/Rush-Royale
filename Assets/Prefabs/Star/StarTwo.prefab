@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 2851926886445821478}
   m_Layer: 7
   m_Name: StarTwo
-  m_TagString: '**'
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,10 +236,14 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
+  objLayer:
+    serializedVersion: 2
+    m_Bits: 0
   mousePos: {x: 0, y: 0, z: 0}
   isClick: 0
   objMove: {fileID: 4069298050355158130}
   checkRadius: 10
+  myLayer: 0
 --- !u!114 &2851926886445821478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMerge: 0
+  isCrash: 0
   crashObj: {fileID: 0}
   near: {fileID: 0}
   checkLayers:

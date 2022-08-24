@@ -7,10 +7,10 @@ public class ObjectCrash : MonoBehaviour
     public static ObjectCrash Instance;
     public bool isMerge = false;
     public bool isCrash = false;
-    public GameObject crashObj;
     public GameObject near;
     Transform nearObj;
     [SerializeField] LayerMask checkLayers;
+    public List<GameObject> others;
     private void Awake()
     {
         Instance = this;
@@ -26,39 +26,42 @@ public class ObjectCrash : MonoBehaviour
             break;
         }
     }
-    private void OnTriggerStay(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
         if (gameObject.GetComponent<Placement>().isClick)
         {
             isCrash = true;
-            //gameObject.layer = 0;
             Debug.Log("af");
-            if (gameObject.tag == other.tag)
+            if (other.gameObject != null)
             {
-                //if (crashObj == null)
-                //{
-                //    crashObj = other.gameObject;
-                //}
-                if (other.gameObject == near)
-                {
-                    //isMerge = true;
-                    near = other.gameObject;
-                    Debug.Log("sadsasda");
-                }
-                //crashObj = null;
-
-                isMerge = true;
+                others.Add(other.gameObject);
             }
-            else
+            for (int i = 0; i < others.Count; i++)
             {
-                isMerge = false;
+                if (gameObject.GetComponent<Placement>().myLayer == others[i].layer && gameObject.tag == others[i].tag)
+                {
+                    isMerge = true;
+                }
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        isCrash = false;
-        isMerge = false;
-        crashObj = null;
+        if (others.Count > 0)
+        {
+            others.Remove(other.gameObject);
+        }
+        else
+        {
+            isCrash = false;
+        }
+        for (int i = 0; i < others.Count; i++)
+        {
+            if (gameObject.GetComponent<Placement>().myLayer != others[i].layer || gameObject.tag != others[i].tag)
+            {
+                isMerge = false;
+            }
+        }
     }
 }

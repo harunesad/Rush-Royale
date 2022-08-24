@@ -116,9 +116,9 @@ GameObject:
   - component: {fileID: 4830915018658505852}
   - component: {fileID: 8430480341813995790}
   - component: {fileID: -2823573228636901310}
-  m_Layer: 6
-  m_Name: PlusThree
-  m_TagString: '*'
+  m_Layer: 9
+  m_Name: MinusOne
+  m_TagString: 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e16682556ffc5eb408d4841c1385d115, type: 2}
+  - {fileID: 2100000, guid: 84fd47407344f214e84c35f762b12e75, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,6 +240,7 @@ MonoBehaviour:
   isClick: 0
   objMove: {fileID: 8430480341813995787}
   checkRadius: 10
+  myLayer: 0
 --- !u!114 &-2823573228636901310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,11 +254,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMerge: 0
+  isCrash: 0
   crashObj: {fileID: 0}
   near: {fileID: 0}
   checkLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 512
 --- !u!1 &8671478722121472596
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +++
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -351,8 +353,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46
-  m_fontSizeBase: 46
+  m_fontSize: 76
+  m_fontSizeBase: 76
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
