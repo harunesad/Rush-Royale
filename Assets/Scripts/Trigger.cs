@@ -10,6 +10,7 @@ public class Trigger : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Untagged") && !Placement.instance.isClick)
         {
+            other.gameObject.layer = other.gameObject.GetComponent<Placement>().objLayer;
             isEmpty = false;
             Debug.Log("a");
             if (SpawnSystem.instance.spawnPoints.Contains(gameObject))

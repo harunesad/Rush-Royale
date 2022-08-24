@@ -6,6 +6,7 @@ public class ObjectCrash : MonoBehaviour
 {
     public static ObjectCrash Instance;
     public bool isMerge = false;
+    public bool isCrash = false;
     public GameObject crashObj;
     public GameObject near;
     Transform nearObj;
@@ -29,16 +30,19 @@ public class ObjectCrash : MonoBehaviour
     {
         if (gameObject.GetComponent<Placement>().isClick)
         {
+            isCrash = true;
+            //gameObject.layer = 0;
+            Debug.Log("af");
             if (gameObject.tag == other.tag)
             {
-                if (crashObj == null)
-                {
-                    crashObj = other.gameObject;
-                }
-                if (crashObj != near)
+                //if (crashObj == null)
+                //{
+                //    crashObj = other.gameObject;
+                //}
+                if (other.gameObject == near)
                 {
                     //isMerge = true;
-                    crashObj = null;
+                    near = other.gameObject;
                     Debug.Log("sadsasda");
                 }
                 //crashObj = null;
@@ -53,6 +57,7 @@ public class ObjectCrash : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        isCrash = false;
         isMerge = false;
         crashObj = null;
     }

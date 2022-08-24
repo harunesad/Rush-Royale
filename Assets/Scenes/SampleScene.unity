@@ -789,7 +789,8 @@ MonoBehaviour:
   levelObj:
   - {fileID: 8430480341813995787, guid: 57f626b65f7c8ae4ebb0c5da4eb8ab78, type: 3}
   - {fileID: 4069298050355158130, guid: f75c7b3bb35720f4789e639fd503abc9, type: 3}
-  isEmpty: 010101010101010101010101010101
+  - {fileID: 4069298050355158130, guid: 13c4fb507a5d4a548978a2fc320ce177, type: 3}
+  - {fileID: 4069298050355158130, guid: a96dddd2c5ff88149b8eb637850fa811, type: 3}
   spawnObj: {fileID: 8430480341813995787, guid: 57f626b65f7c8ae4ebb0c5da4eb8ab78, type: 3}
 --- !u!4 &1657864218
 Transform:

@@ -7,6 +7,7 @@ public class Placement : MonoBehaviour
     public static Placement instance;
     public LayerMask checkLayers;
     public LayerMask layerMask;
+    public LayerMask objLayer;
 
     Transform nearObject;
     public Vector3 mousePos;
@@ -20,10 +21,11 @@ public class Placement : MonoBehaviour
     float firstPosX, firstPosZ;
     float lastPosX, lastPosZ;
 
-    int tagCount;
+    //int tagCount;
     private void Awake()
     {
         instance = this;
+        objLayer = gameObject.layer;
     }
     void Update()
     {
@@ -57,11 +59,11 @@ public class Placement : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            objMove.gameObject.layer = 6;
+            //objMove.gameObject.layer = 7;
             isClick = false;
             lastPosX = nearObject.position.x;
             lastPosZ = nearObject.position.z;
-            if (nearObject.GetComponent<Trigger>().isEmpty)
+            if (!objMove.gameObject.GetComponent<ObjectCrash>().isCrash)
             {
                 Debug.Log("d");
                 objMove.transform.position = new Vector3(lastPosX, 0.225f, lastPosZ);
@@ -73,20 +75,18 @@ public class Placement : MonoBehaviour
                     Debug.Log("i");
                     objMove.transform.position = new Vector3(posX, 0.225f, posZ);
                 }
-                else
+                if (objMove.gameObject.GetComponent<ObjectCrash>().isMerge)
                 {
                     Debug.Log("F");
-                    tagCount = int.Parse(objMove.tag);
                     for (int i = 0; i < SpawnSystem.instance.levelObj.Count; i++)
                     {
                         if (objMove.gameObject.tag == SpawnSystem.instance.levelObj[i].tag)
                         {
-                            //Debug.Log(ObjectCrash.Instance.crashObj.gameObject.transform.position);
-                            //Destroy(ObjectCrash.Instance.crashObj.gameObject);
+                            lastPosX = objMove.GetComponent<ObjectCrash>().near.transform.position.x;
+                            lastPosZ = objMove.GetComponent<ObjectCrash>().near.transform.position.z;
                             Instantiate(SpawnSystem.instance.levelObj[i + 1], new Vector3(lastPosX, 0.225f, lastPosZ), transform.rotation);
-                            Destroy(objMove.gameObject);
-                            //Destroy(ObjectCrash.Instance.crashObj.GetComponent<Placement>().objMove.gameObject);
-                            Destroy(objMove.gameObject.GetComponent<ObjectCrash>().crashObj.gameObject);
+                            Destroy(objMove.gameObject.GetComponent<Placement>().objMove.gameObject);
+                            Destroy(objMove.gameObject.GetComponent<ObjectCrash>().near);
                         }
                     }
                 }
