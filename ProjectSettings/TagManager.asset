@@ -23,13 +23,13 @@ TagManager:
   - Star
   - Plus
   - Minus
+  - Divide
   - StarDefault
   - PlusDefault
   - MinusDefault
-  - 
-  - 
-  - 
-  - 
+  - DivideDefault
+  - ObjMove
+  - Edge
   - 
   - 
   - 

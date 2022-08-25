@@ -5,7 +5,6 @@ using UnityEngine;
 public class Trigger : MonoBehaviour
 {
     public bool isEmpty = true;
-    LayerMask mask;
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Untagged") && !Placement.instance.isClick)
@@ -13,9 +12,9 @@ public class Trigger : MonoBehaviour
             other.gameObject.layer = other.gameObject.GetComponent<Placement>().myLayer;
             isEmpty = false;
             Debug.Log("a");
-            if (SpawnSystem.instance.spawnPoints.Contains(gameObject))
+            if (SpawnSystem.Instance.spawnPoints.Contains(gameObject))
             {
-                SpawnSystem.instance.spawnPoints.Remove(gameObject);
+                SpawnSystem.Instance.spawnPoints.Remove(gameObject);
             }
         }
     }
@@ -25,9 +24,9 @@ public class Trigger : MonoBehaviour
         {
             isEmpty = true;
             Debug.Log(isEmpty);
-            if (!SpawnSystem.instance.spawnPoints.Contains(gameObject))
+            if (!SpawnSystem.Instance.spawnPoints.Contains(gameObject))
             {
-                SpawnSystem.instance.spawnPoints.Add(gameObject);
+                SpawnSystem.Instance.spawnPoints.Add(gameObject);
             }
         }
     }

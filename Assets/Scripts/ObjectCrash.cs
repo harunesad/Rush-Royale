@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class ObjectCrash : MonoBehaviour
 {
-    public static ObjectCrash Instance;
     public bool isMerge = false;
     public bool isCrash = false;
     public GameObject near;
     Transform nearObj;
     [SerializeField] LayerMask checkLayers;
     public List<GameObject> others;
-    private void Awake()
-    {
-        Instance = this;
-    }
+    public GameObject crashObj;
     private void Update()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, Placement.instance.checkRadius, checkLayers);
@@ -42,6 +38,7 @@ public class ObjectCrash : MonoBehaviour
                 if (gameObject.GetComponent<Placement>().myLayer == others[i].layer && gameObject.tag == others[i].tag)
                 {
                     isMerge = true;
+                    crashObj = others[i];
                 }
             }
         }
@@ -52,7 +49,7 @@ public class ObjectCrash : MonoBehaviour
         {
             others.Remove(other.gameObject);
         }
-        else
+        if (others.Count == 0)
         {
             isCrash = false;
         }

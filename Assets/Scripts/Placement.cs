@@ -7,7 +7,7 @@ public class Placement : MonoBehaviour
     public static Placement instance;
     public LayerMask checkLayers;
     public LayerMask layerMask;
-    //public LayerMask objLayer;
+    public LayerMask layerMaskBase;
 
     Transform nearObject;
     public Vector3 mousePos;
@@ -16,12 +16,13 @@ public class Placement : MonoBehaviour
     public GameObject objMove;
 
     public float checkRadius;
-    float posY = 0.25f;
+    float posY = 0.35f;
     float posX, posZ;
     float firstPosX, firstPosZ;
     float lastPosX, lastPosZ;
     public int myLayer;
-    //int tagCount;
+
+    [SerializeField] bool firstPos = false;
     private void Awake()
     {
         instance = this;
@@ -51,22 +52,33 @@ public class Placement : MonoBehaviour
             {
                 firstPosX = hit.point.x;
                 firstPosZ = hit.point.z;
-                firstPosX = Math.Clamp(firstPosX, -1.025f, 1.025f);
-                firstPosZ = Math.Clamp(firstPosZ, -3, -1.975f);
-
                 objMove.transform.position = new Vector3(firstPosX, posY, firstPosZ);
+                firstPos = true;
+            }
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMaskBase))
+            {
+                firstPosX = hit.point.x;
+                firstPosZ = hit.point.z;
+                objMove.transform.position = new Vector3(firstPosX, posY, firstPosZ);
+                firstPos = false;
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
-            //objMove.gameObject.layer = 7;
             isClick = false;
             lastPosX = nearObject.position.x;
             lastPosZ = nearObject.position.z;
             if (!objMove.gameObject.GetComponent<ObjectCrash>().isCrash)
             {
                 Debug.Log("d");
-                objMove.transform.position = new Vector3(lastPosX, 0.225f, lastPosZ);
+                if (!firstPos)
+                {
+                    objMove.transform.position = new Vector3(lastPosX, 0.225f, lastPosZ);
+                }
+                else
+                {
+                    objMove.transform.position = new Vector3(posX, 0.225f, posZ);
+                }
             }
             else
             {
@@ -78,39 +90,10 @@ public class Placement : MonoBehaviour
                 if (objMove.gameObject.GetComponent<ObjectCrash>().isMerge)
                 {
                     Debug.Log("F");
-                    for (int i = 0; i < SpawnSystem.instance.starObj.Count - 1; i++)
-                    {
-                        if (objMove.gameObject.tag == SpawnSystem.instance.starObj[i].tag && objMove.layer == 10)
-                        {
-                            lastPosX = objMove.GetComponent<ObjectCrash>().near.transform.position.x;
-                            lastPosZ = objMove.GetComponent<ObjectCrash>().near.transform.position.z;
-                            Instantiate(SpawnSystem.instance.starObj[i + 1], new Vector3(lastPosX, 0.225f, lastPosZ), transform.rotation);
-                            Destroy(objMove.gameObject.GetComponent<Placement>().objMove.gameObject);
-                            Destroy(objMove.gameObject.GetComponent<ObjectCrash>().near);
-                        }
-                    }
-                    for (int i = 0; i < SpawnSystem.instance.plusObj.Count - 1; i++)
-                    {
-                        if (objMove.gameObject.tag == SpawnSystem.instance.plusObj[i].tag && objMove.layer == 11)
-                        {
-                            lastPosX = objMove.GetComponent<ObjectCrash>().near.transform.position.x;
-                            lastPosZ = objMove.GetComponent<ObjectCrash>().near.transform.position.z;
-                            Instantiate(SpawnSystem.instance.plusObj[i + 1], new Vector3(lastPosX, 0.225f, lastPosZ), transform.rotation);
-                            Destroy(objMove.gameObject.GetComponent<Placement>().objMove.gameObject);
-                            Destroy(objMove.gameObject.GetComponent<ObjectCrash>().near);
-                        }
-                    }
-                    for (int i = 0; i < SpawnSystem.instance.minusObj.Count - 1; i++)
-                    {
-                        if (objMove.gameObject.tag == SpawnSystem.instance.minusObj[i].tag && objMove.layer == 12)
-                        {
-                            lastPosX = objMove.GetComponent<ObjectCrash>().near.transform.position.x;
-                            lastPosZ = objMove.GetComponent<ObjectCrash>().near.transform.position.z;
-                            Instantiate(SpawnSystem.instance.minusObj[i + 1], new Vector3(lastPosX, 0.225f, lastPosZ), transform.rotation);
-                            Destroy(objMove.gameObject.GetComponent<Placement>().objMove.gameObject);
-                            Destroy(objMove.gameObject.GetComponent<ObjectCrash>().near);
-                        }
-                    }
+                    SpawnNextLevel(SpawnSystem.Instance.starObj, 11);
+                    SpawnNextLevel(SpawnSystem.Instance.plusObj, 12);
+                    SpawnNextLevel(SpawnSystem.Instance.minusObj, 13);
+                    SpawnNextLevel(SpawnSystem.Instance.divideObj, 14);
                 }
             }
         }
@@ -121,7 +104,21 @@ public class Placement : MonoBehaviour
         {
             gameObject.GetComponent<Placement>().enabled = false;
         }
-        objMove.gameObject.layer = myLayer + 3;
+        objMove.gameObject.layer = myLayer + 4;
         isClick = true;
+    }
+    void SpawnNextLevel(List<GameObject> obj, int layerCount)
+    {
+        for (int i = 0; i < obj.Count - 1; i++)
+        {
+            if (objMove.gameObject.tag == obj[i].tag && objMove.layer == layerCount)
+            {
+                lastPosX = objMove.GetComponent<ObjectCrash>().crashObj.transform.position.x;
+                lastPosZ = objMove.GetComponent<ObjectCrash>().crashObj.transform.position.z;
+                Instantiate(obj[i + 1], new Vector3(lastPosX, 0.225f, lastPosZ), transform.rotation);
+                Destroy(objMove.gameObject.GetComponent<Placement>().objMove.gameObject);
+                Destroy(objMove.gameObject.GetComponent<ObjectCrash>().crashObj);
+            }
+        }
     }
 }

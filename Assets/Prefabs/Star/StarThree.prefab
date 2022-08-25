@@ -235,15 +235,16 @@ MonoBehaviour:
     m_Bits: 8
   layerMask:
     serializedVersion: 2
-    m_Bits: 8
-  objLayer:
+    m_Bits: 32768
+  layerMaskBase:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65544
   mousePos: {x: 0, y: 0, z: 0}
   isClick: 0
   objMove: {fileID: 4069298050355158130}
   checkRadius: 10
   myLayer: 0
+  firstPos: 0
 --- !u!114 &2851926886445821478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,11 +259,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMerge: 0
   isCrash: 0
-  crashObj: {fileID: 0}
   near: {fileID: 0}
   checkLayers:
     serializedVersion: 2
     m_Bits: 128
+  others: []
+  crashObj: {fileID: 0}
 --- !u!1 &9144861888773275435
 GameObject:
   m_ObjectHideFlags: 0
