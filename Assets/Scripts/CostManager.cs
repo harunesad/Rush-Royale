@@ -8,6 +8,7 @@ public class CostManager : GenericSingleton<CostManager>
     public TextMeshProUGUI costText;
     public int cost;
     public int costReduce;
+    int costInc = 10;
     void Start()
     {
 
@@ -20,6 +21,11 @@ public class CostManager : GenericSingleton<CostManager>
     {
         costReduce += 10;
         cost -= costReduce;
+        costText.text = cost.ToString();
+    }
+    public void KillMonster()
+    {
+        cost += costInc;
         costText.text = cost.ToString();
     }
 }
