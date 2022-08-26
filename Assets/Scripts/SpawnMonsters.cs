@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnMonsters : GenericSingleton<SpawnMonsters>
 {
-    [SerializeField] GameObject spawnMonster;
+    [SerializeField] List<GameObject> spawnMonsters;
     [SerializeField] Transform spawnPoint;
     [SerializeField] List<GameObject> monsters;
 
@@ -12,11 +12,23 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
     float repeatTime = 1f;
     void Start()
     {
-        InvokeRepeating("Spawn", startTime, repeatTime);
+        InvokeRepeating("SpawnSlow", startTime, repeatTime);
+        InvokeRepeating("SpawnFast", 4, 5);
+        InvokeRepeating("SpawnBig", 11, 10);
     }
-    void Spawn()
+    void SpawnSlow()
     {
-        var monster = Instantiate(spawnMonster, spawnPoint.position, Quaternion.identity);
+        var monster = Instantiate(spawnMonsters[0], spawnPoint.position, Quaternion.identity);
+        monsters.Add(monster);
+    }
+    void SpawnFast()
+    {
+        var monster = Instantiate(spawnMonsters[1], spawnPoint.position, Quaternion.identity);
+        monsters.Add(monster);
+    }
+    void SpawnBig()
+    {
+        var monster = Instantiate(spawnMonsters[2], spawnPoint.position, Quaternion.identity);
         monsters.Add(monster);
     }
 }

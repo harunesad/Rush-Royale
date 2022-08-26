@@ -1014,6 +1014,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
+--- !u!1 &995115168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995115169}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &995115169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995115168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8773171, y: -0.059174657, z: -1.6352656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347220247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,7 +1153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1509678416}
   m_Layer: 0
-  m_Name: 'FinishPoint '
+  m_Name: FinishPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1230,7 +1261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26733800fe8f17549b070fd58fd2e5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMonster: {fileID: 5019888017950112551, guid: 50aab07f1e61b184bb81013c7a729116, type: 3}
+  spawnMonsters:
+  - {fileID: 5019888017950112551, guid: 50aab07f1e61b184bb81013c7a729116, type: 3}
+  - {fileID: 5019888017950112551, guid: 035c90ee5b3c3a4489cc75a26d8ca433, type: 3}
+  - {fileID: 5019888017950112551, guid: fac8dedaca44b6d4aa818abe61e3afa1, type: 3}
   spawnPoint: {fileID: 93883430}
   monsters: []
 --- !u!1 &1709768013

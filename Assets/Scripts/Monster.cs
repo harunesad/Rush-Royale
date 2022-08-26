@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Monster : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Monster : MonoBehaviour
 
     [SerializeField] GameObject targetPoint;
     [SerializeField] GameObject finishPoint;
+
+    [SerializeField] TextMeshProUGUI healthText;
     protected enum MonsterState
     {
         Idle,
@@ -24,6 +27,7 @@ public class Monster : MonoBehaviour
     }
     private void Update()
     {
+        healthText.text = health.ToString();
         UpdateMonster();
     }
     public void UpdateMonster()
@@ -68,12 +72,13 @@ public class Monster : MonoBehaviour
     {
         if (transform.position.z < targetPoint.transform.position.z)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime);
+            transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
         }
         else
         {
+            healthText.gameObject.transform.parent.rotation = Quaternion.identity;
             transform.rotation = Quaternion.Euler(0, 90, 0);
-            transform.Translate(Vector3.forward * Time.deltaTime);
+            transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
         }
     }
     void Died()
