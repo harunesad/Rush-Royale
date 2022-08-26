@@ -83,6 +83,7 @@ public class Monster : MonoBehaviour
     }
     void Died()
     {
+        UIManager.Instance.CountRemove();
         CostManager.Instance.KillMonster();
     }
 }

@@ -283,6 +283,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 131072
   checkRadius: 10
+  attack: 300
   targetMonster: {fileID: 0}
   finishPoint: {fileID: 0}
   bullet: {fileID: 4912979821746414824, guid: 2389c3ac1ec279b46b0dde36dbbce47b, type: 3}

@@ -15,6 +15,7 @@ public class BulletControl : MonoBehaviour
     void Start()
     {
         soldier = transform.parent.GetComponent<PlayerSoldier>();
+        attack = soldier.attack;
     }
     void Update()
     {
@@ -35,7 +36,7 @@ public class BulletControl : MonoBehaviour
         if (other.gameObject.CompareTag("Monster"))
         {
             Monster monster = other.GetComponent<Monster>();
-            monster.health -= attack - monster.armor;
+            monster.health -= attack / monster.armor;
             Destroy(gameObject);
         }
     }

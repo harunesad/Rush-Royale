@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10000
-  armor: 100
+  armor: 3
   moveSpeed: 0.5
   targetPoint: {fileID: 0}
   finishPoint: {fileID: 0}

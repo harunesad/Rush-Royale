@@ -8,6 +8,7 @@ public class PlayerSoldier : MonoBehaviour
 
     public LayerMask checkLayers;
     public float checkRadius;
+    public float attack;
 
     public Transform targetMonster;
     [SerializeField] GameObject finishPoint;
