@@ -53,12 +53,16 @@ public class ObjectCrash : MonoBehaviour
         {
             isCrash = false;
         }
-        for (int i = 0; i < others.Count; i++)
+        //for (int i = 0; i < others.Count; i++)
+        //{
+        //    if (gameObject.GetComponent<Placement>().myLayer != others[i].layer || gameObject.tag != others[i].tag)
+        //    {
+        //        isMerge = false;
+        //    }
+        //}
+        if (crashObj == other.gameObject)
         {
-            if (gameObject.GetComponent<Placement>().myLayer != others[i].layer || gameObject.tag != others[i].tag)
-            {
-                isMerge = false;
-            }
+            isMerge = false;
         }
     }
 }

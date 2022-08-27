@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: -8941281240146854807}
   - component: {fileID: 6073119702561508577}
   - component: {fileID: 2851926886445821478}
+  - component: {fileID: -5131669624505661950}
   m_Layer: 7
   m_Name: StarThree
   m_TagString: 3
@@ -265,6 +266,27 @@ MonoBehaviour:
     m_Bits: 128
   others: []
   crashObj: {fileID: 0}
+--- !u!114 &-5131669624505661950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069298050355158130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7445c59702ef03a45a74da48f0d7ee6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerMode: 0
+  checkLayers:
+    serializedVersion: 2
+    m_Bits: 131072
+  checkRadius: 10
+  attack: 400
+  targetMonster: {fileID: 0}
+  finishPoint: {fileID: 0}
+  bullet: {fileID: 4912979821746414824, guid: a5ce2ae7214d4b94784b0ae5ab2fe050, type: 3}
 --- !u!1 &9144861888773275435
 GameObject:
   m_ObjectHideFlags: 0

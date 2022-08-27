@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8990909313015048341}
   - component: {fileID: 2039993558145865685}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: StarBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5b53e07fcaba40a4882468a5cb056f3a, type: 2}
+  - {fileID: 2100000, guid: cbf3ff0a34829a341bfcf931170621a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,4 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 0
-  attackSpeed: 5
+  attackSpeed: 6

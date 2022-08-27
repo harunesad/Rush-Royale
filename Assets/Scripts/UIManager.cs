@@ -8,9 +8,17 @@ public class UIManager : GenericSingleton<UIManager>
     public TextMeshProUGUI monsterCount;
     public TextMeshProUGUI costText;
     public TextMeshProUGUI timeText;
+    public TextMeshProUGUI waveText;
+    public TextMeshProUGUI costReduceText;
+
     public float time = 40;
     float minute, second;
+    public int wave;
     string count = "*";
+    private void Start()
+    {
+        waveText.text = "" + (wave + 1);
+    }
     private void Update()
     {
         if (time > 0)

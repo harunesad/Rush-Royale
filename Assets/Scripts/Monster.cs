@@ -11,8 +11,6 @@ public class Monster : MonoBehaviour
     public float moveSpeed;
 
     [SerializeField] GameObject targetPoint;
-    [SerializeField] GameObject finishPoint;
-
     [SerializeField] TextMeshProUGUI healthText;
     protected enum MonsterState
     {
@@ -23,7 +21,6 @@ public class Monster : MonoBehaviour
     private void Start()
     {
         targetPoint = GameObject.Find("TargetPoint");
-        finishPoint = GameObject.Find("FinishPoint");
     }
     private void Update()
     {
@@ -83,7 +80,25 @@ public class Monster : MonoBehaviour
     }
     void Died()
     {
+        SpawnMonsters.Instance.monsters.Remove(gameObject);
         UIManager.Instance.CountRemove();
         CostManager.Instance.KillMonster();
+        if (SpawnMonsters.Instance.waveFinish)
+        {
+            UIManager.Instance.time = 20;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            UIManager.Instance.CountRemove();
+            SpawnMonsters.Instance.monsters.Remove(gameObject);
+            if (SpawnMonsters.Instance.waveFinish)
+            {
+                UIManager.Instance.time = 20;
+            }
+            Destroy(gameObject);
+        }
     }
 }

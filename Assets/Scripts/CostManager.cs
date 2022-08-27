@@ -6,7 +6,7 @@ using TMPro;
 public class CostManager : GenericSingleton<CostManager>
 {
     public int cost;
-    public int costReduce;
+    public int costReduce = 10;
     int costInc = 10;
     void Start()
     {
@@ -15,12 +15,13 @@ public class CostManager : GenericSingleton<CostManager>
     void Update()
     {
         UIManager.Instance.costText.text = cost.ToString();
+        UIManager.Instance.costReduceText.text = costReduce.ToString();
     }
     public void BuySoldier()
     {
-        costReduce += 10;
         cost -= costReduce;
         UIManager.Instance.costText.text = cost.ToString();
+        costReduce += 10;
     }
     public void KillMonster()
     {

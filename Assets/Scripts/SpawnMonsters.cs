@@ -6,14 +6,18 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
 {
     [SerializeField] List<GameObject> spawnMonsters;
     [SerializeField] Transform spawnPoint;
-    [SerializeField] List<GameObject> monsters;
+    public List<GameObject> monsters;
+    [SerializeField] List<GameObject> bossMonster;
 
-    public float slowStartTime = 2, slowRepeatTime = 1;
+    float slowStartTime = 2, slowRepeatTime = 1;
     float fastStartTime = 4f, fastRepeatTime = 5;
     float bigStartTime = 11, bigRepeatTime = 10;
+    float bossStartTime = 3, bossRepeatTime = 100;
     public float waveTime;
+    public float bossWaveTime;
 
-    bool waveFinish = false;
+    public bool waveFinish = false;
+    int wave = 1;
     private void Update()
     {
         WaveFinishState();
@@ -21,6 +25,7 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
         SpawnSlow();
         SpawnFast();
         SpawnBig();
+        SpawnRandomBoss();
     }
     void WaveFinishState()
     {
@@ -30,7 +35,9 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
             {
                 waveFinish = true;
                 Destroy(monsters[i]);
+                UIManager.Instance.monsterCount.text = "";
             }
+            monsters.Clear();
         }
         else
         {
@@ -42,10 +49,16 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
         if (!waveFinish)
         {
             waveTime += Time.deltaTime;
+            bossWaveTime = 0;
+            bossStartTime = 0;
         }
         else
         {
+            bossWaveTime += Time.deltaTime;
             waveTime = 0;
+            slowStartTime = 2;
+            fastStartTime = 4;
+            bigStartTime = 11;
         }
     }
     void SpawnSlow()
@@ -56,6 +69,15 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
             var monster = Instantiate(spawnMonsters[0], spawnPoint.position, Quaternion.identity);
             monsters.Add(monster);
             UIManager.Instance.CountAdd();
+            UIManager.Instance.waveText.text = "" + (UIManager.Instance.wave + 1);
+            for (int i = 0; i < 10; i++)
+            {
+                if (UIManager.Instance.wave + 1 == i)
+                {
+                    i = i * i;
+                    monster.GetComponent<Monster>().health = monster.GetComponent<Monster>().health * i;
+                }
+            }
         }
     }
     void SpawnFast()
@@ -66,6 +88,14 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
             var monster = Instantiate(spawnMonsters[1], spawnPoint.position, Quaternion.identity);
             monsters.Add(monster);
             UIManager.Instance.CountAdd();
+            for (int i = 0; i < 10; i++)
+            {
+                if (UIManager.Instance.wave + 1 == i)
+                {
+                    i = i * i;
+                    monster.GetComponent<Monster>().health = monster.GetComponent<Monster>().health * i;
+                }
+            }
         }
     }
     void SpawnBig()
@@ -76,6 +106,32 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
             var monster = Instantiate(spawnMonsters[2], spawnPoint.position, Quaternion.identity);
             monsters.Add(monster);
             UIManager.Instance.CountAdd();
+            for (int i = 0; i < 10; i++)
+            {
+                if (UIManager.Instance.wave + 1 == i)
+                {
+                    i = i * i;
+                    monster.GetComponent<Monster>().health = monster.GetComponent<Monster>().health * i;
+                }
+            }
+        }
+    }
+    void SpawnRandomBoss()
+    {
+        if (bossWaveTime > bossStartTime && waveFinish)
+        {
+            bossStartTime += bossRepeatTime;
+            var monster = Instantiate(bossMonster[0], spawnPoint.position, Quaternion.identity);
+            UIManager.Instance.CountAdd();
+            for (int i = 0; i < 10; i++)
+            {
+                if (UIManager.Instance.wave + 1 == i)
+                {
+                    i = i * i;
+                    monster.GetComponent<Monster>().health = monster.GetComponent<Monster>().health * i;
+                }
+            }
+            UIManager.Instance.wave++;
         }
     }
 }
