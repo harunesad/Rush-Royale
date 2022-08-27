@@ -22,17 +22,21 @@ public class ObjectCrash : MonoBehaviour
             break;
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (gameObject.GetComponent<Placement>().isClick)
         {
-            isCrash = true;
-            Debug.Log("af");
             if (other.gameObject != null)
             {
                 others.Add(other.gameObject);
             }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (gameObject.GetComponent<Placement>().isClick)
+        {
+            isCrash = true;
             for (int i = 0; i < others.Count; i++)
             {
                 if (gameObject.GetComponent<Placement>().myLayer == others[i].layer && gameObject.tag == others[i].tag)
@@ -53,13 +57,6 @@ public class ObjectCrash : MonoBehaviour
         {
             isCrash = false;
         }
-        //for (int i = 0; i < others.Count; i++)
-        //{
-        //    if (gameObject.GetComponent<Placement>().myLayer != others[i].layer || gameObject.tag != others[i].tag)
-        //    {
-        //        isMerge = false;
-        //    }
-        //}
         if (crashObj == other.gameObject)
         {
             isMerge = false;

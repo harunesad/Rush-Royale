@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnSystem : GenericSingleton<SpawnSystem>
 {
+    public List<GameObject> soldiers;
     public List<GameObject> spawnPoints;
     public List<GameObject> starObj;
     public List<GameObject> plusObj;
@@ -11,10 +12,10 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
     public List<GameObject> divideObj;
     [SerializeField] List<GameObject> spawnObj;
 
-    [SerializeField] GameObject spawnStar;
-    [SerializeField] GameObject spawnPlus;
-    [SerializeField] GameObject spawnMinus;
-    [SerializeField] GameObject spawnDivide;
+    //[SerializeField] GameObject spawnStar;
+    //[SerializeField] GameObject spawnPlus;
+    //[SerializeField] GameObject spawnMinus;
+    //[SerializeField] GameObject spawnDivide;
     Vector3 pos;
     public void Spawn()
     {
@@ -42,7 +43,8 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
 
             int random = Random.Range(0, 4);
             CostManager.Instance.BuySoldier();
-            Instantiate(spawnObj[random], pos + Vector3.up * 0.225f, Quaternion.identity);
+            var soldier = Instantiate(spawnObj[random], pos + Vector3.up * 0.225f, Quaternion.identity);
+            soldiers.Add(soldier);
         }
     }
 }

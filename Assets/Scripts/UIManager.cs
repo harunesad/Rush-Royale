@@ -10,6 +10,7 @@ public class UIManager : GenericSingleton<UIManager>
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI costReduceText;
+    public List<TextMeshProUGUI> upgradeText;
 
     public float time = 40;
     float minute, second;

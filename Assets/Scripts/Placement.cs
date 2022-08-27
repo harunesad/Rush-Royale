@@ -115,7 +115,10 @@ public class Placement : MonoBehaviour
             {
                 lastPosX = objMove.GetComponent<ObjectCrash>().crashObj.transform.position.x;
                 lastPosZ = objMove.GetComponent<ObjectCrash>().crashObj.transform.position.z;
-                Instantiate(obj[i + 1], new Vector3(lastPosX, 0.225f, lastPosZ), transform.rotation);
+                var spawnObj = Instantiate(obj[i + 1], new Vector3(lastPosX, 0.225f, lastPosZ), transform.rotation);
+                SpawnSystem.Instance.soldiers.Add(spawnObj);
+                SpawnSystem.Instance.soldiers.Remove(objMove.gameObject.GetComponent<ObjectCrash>().crashObj);
+                SpawnSystem.Instance.soldiers.Remove(objMove.gameObject.GetComponent<Placement>().objMove.gameObject);
                 Destroy(objMove.gameObject.GetComponent<Placement>().objMove.gameObject);
                 Destroy(objMove.gameObject.GetComponent<ObjectCrash>().crashObj);
             }
