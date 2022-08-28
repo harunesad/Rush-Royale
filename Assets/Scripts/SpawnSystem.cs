@@ -17,6 +17,23 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
     //[SerializeField] GameObject spawnMinus;
     //[SerializeField] GameObject spawnDivide;
     Vector3 pos;
+    private void Update()
+    {
+        //if (!SpawnMonsters.Instance.waveFinish)
+        //{
+        //    for (int i = 0; i < soldiers.Count; i++)
+        //    {
+        //        soldiers[i].GetComponent<PlayerSoldier>().enabled = true;
+        //    }
+        //}
+    }
+    public void ReAttack()
+    {
+        for (int i = 0; i < soldiers.Count; i++)
+        {
+            soldiers[i].GetComponent<PlayerSoldier>().enabled = true;
+        }
+    }
     public void Spawn()
     {
         //int randomIndex = Random.Range(0, spawnPoints.Count);

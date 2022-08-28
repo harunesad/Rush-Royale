@@ -73,14 +73,4 @@ public class PlayerSoldier : MonoBehaviour
                 break;
         }
     }
-    //void AttackMonster()
-    //{
-    //    //moveToBullet.transform.LookAt(targetMonster.transform.position);
-    //    if (moveToBullet.transform.parent != null)
-    //    {
-    //        moveToBullet.transform.parent = null;
-    //    }
-    //    Vector3 pos = moveToBullet.transform.position;
-    //    moveToBullet.transform.position = Vector3.Lerp(moveToBullet.transform.position, targetMonster.transform.position, Time.deltaTime * attackSpeed);
-    //}
 }

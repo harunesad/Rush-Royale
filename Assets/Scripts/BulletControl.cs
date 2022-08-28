@@ -29,7 +29,7 @@ public class BulletControl : MonoBehaviour
         {
             transform.parent = null;
         }
-        transform.position = Vector3.Lerp(transform.position, soldier.targetMonster.position, Time.deltaTime * attackSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, soldier.targetMonster.position, Time.deltaTime * attackSpeed);
     }
     private void OnTriggerEnter(Collider other)
     {

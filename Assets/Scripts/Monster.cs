@@ -9,6 +9,7 @@ public class Monster : MonoBehaviour
     public float health;
     public float armor;
     public float moveSpeed;
+    public int specialAttack;
 
     [SerializeField] GameObject targetPoint;
     [SerializeField] TextMeshProUGUI healthText;
@@ -21,6 +22,7 @@ public class Monster : MonoBehaviour
     private void Start()
     {
         targetPoint = GameObject.Find("TargetPoint");
+        InvokeRepeating("AttackPlayer", 2, 15);
     }
     private void Update()
     {
@@ -34,7 +36,7 @@ public class Monster : MonoBehaviour
             case MonsterState.Idle:
                 if (health <= 0)
                 {
-                    Destroy(gameObject, 1);
+                    Destroy(gameObject, 0.5f);
                 }
                 else
                 {
@@ -61,6 +63,7 @@ public class Monster : MonoBehaviour
                 MoveMonster();
                 break;
             case MonsterState.Die:
+                CostManager.Instance.KillMonster();
                 Died();
                 break;
         }
@@ -78,26 +81,26 @@ public class Monster : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
         }
     }
+    void AttackPlayer()
+    {
+        SpecialAttack.instance.Special(specialAttack);
+    }
     void Died()
     {
         SpawnMonsters.Instance.monsters.Remove(gameObject);
         UIManager.Instance.CountRemove();
-        CostManager.Instance.KillMonster();
         if (SpawnMonsters.Instance.waveFinish)
         {
             UIManager.Instance.time = 20;
+            SpecialAttack.instance.playerSoldiers.Clear();
+            SpawnSystem.Instance.ReAttack();
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Finish"))
         {
-            UIManager.Instance.CountRemove();
-            SpawnMonsters.Instance.monsters.Remove(gameObject);
-            if (SpawnMonsters.Instance.waveFinish)
-            {
-                UIManager.Instance.time = 20;
-            }
+            Died();
             Destroy(gameObject);
         }
     }
