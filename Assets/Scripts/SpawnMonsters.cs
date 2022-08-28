@@ -16,10 +16,25 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
     public float waveTime;
     public float bossWaveTime;
 
+    public List<float> monsterHealth;
+    public List<float> bossHealth;
     public bool waveFinish = false;
-    int wave = 1;
+    private void Start()
+    {
+        for (int i = 0; i < spawnMonsters.Count; i++)
+        {
+            monsterHealth.Add(i);
+            monsterHealth[i] = spawnMonsters[i].GetComponent<Monster>().health;
+        }
+        for (int i = 0; i < bossMonster.Count; i++)
+        {
+            bossHealth.Add(i);
+            bossHealth[i] = bossMonster[i].GetComponent<Monster>().health;
+        }
+    }
     private void Update()
     {
+        Application.quitting += ValueChanges;
         WaveFinishState();
         WaveTimeInc();
         SpawnSlow();
@@ -70,14 +85,6 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
             monsters.Add(monster);
             UIManager.Instance.CountAdd();
             UIManager.Instance.waveText.text = "" + (UIManager.Instance.wave + 1);
-            for (int i = 0; i < 10; i++)
-            {
-                if (UIManager.Instance.wave + 1 == i)
-                {
-                    i = i * i;
-                    monster.GetComponent<Monster>().health = monster.GetComponent<Monster>().health * i;
-                }
-            }
         }
     }
     void SpawnFast()
@@ -88,14 +95,6 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
             var monster = Instantiate(spawnMonsters[1], spawnPoint.position, Quaternion.identity);
             monsters.Add(monster);
             UIManager.Instance.CountAdd();
-            for (int i = 0; i < 10; i++)
-            {
-                if (UIManager.Instance.wave + 1 == i)
-                {
-                    i = i * i;
-                    monster.GetComponent<Monster>().health = monster.GetComponent<Monster>().health * i;
-                }
-            }
         }
     }
     void SpawnBig()
@@ -106,14 +105,6 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
             var monster = Instantiate(spawnMonsters[2], spawnPoint.position, Quaternion.identity);
             monsters.Add(monster);
             UIManager.Instance.CountAdd();
-            for (int i = 0; i < 10; i++)
-            {
-                if (UIManager.Instance.wave + 1 == i)
-                {
-                    i = i * i;
-                    monster.GetComponent<Monster>().health = monster.GetComponent<Monster>().health * i;
-                }
-            }
         }
     }
     void SpawnRandomBoss()
@@ -123,15 +114,26 @@ public class SpawnMonsters : GenericSingleton<SpawnMonsters>
             bossStartTime += bossRepeatTime;
             var monster = Instantiate(bossMonster[0], spawnPoint.position, Quaternion.identity);
             UIManager.Instance.CountAdd();
-            for (int i = 0; i < 10; i++)
-            {
-                if (UIManager.Instance.wave + 1 == i)
-                {
-                    i = i * i;
-                    monster.GetComponent<Monster>().health = monster.GetComponent<Monster>().health * i;
-                }
-            }
             UIManager.Instance.wave++;
+            for (int i = 0; i < spawnMonsters.Count; i++)
+            {
+                spawnMonsters[i].GetComponent<Monster>().health *= 2;
+            }
+            for (int i = 0; i < bossMonster.Count; i++)
+            {
+                bossMonster[i].GetComponent<Monster>().health *= 2;
+            }
+        }
+    }
+    void ValueChanges()
+    {
+        for (int i = 0; i < monsterHealth.Count; i++)
+        {
+            spawnMonsters[i].GetComponent<Monster>().health = monsterHealth[i];
+        }
+        for (int i = 0; i < bossHealth.Count; i++)
+        {
+            bossMonster[i].GetComponent<Monster>().health = bossHealth[i];
         }
     }
 }

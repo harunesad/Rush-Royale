@@ -5,6 +5,10 @@ using UnityEngine;
 public class UpgradeSystem : MonoBehaviour
 {
     public List<int> upgradeCost;
+    public List<float> divide;
+    public List<float> minus;
+    public List<float> plus;
+    public List<float> star;
     private void Awake()
     {
         for (int i = 0; i < upgradeCost.Count; i++)
@@ -12,84 +16,74 @@ public class UpgradeSystem : MonoBehaviour
             UIManager.Instance.upgradeText[i].text = "" + upgradeCost[i];
         }
     }
+    private void Start()
+    {
+        StartValue(SpawnSystem.Instance.divideObj, divide);
+        StartValue(SpawnSystem.Instance.minusObj, minus);
+        StartValue(SpawnSystem.Instance.plusObj, plus);
+        StartValue(SpawnSystem.Instance.starObj, star);
+    }
+    private void Update()
+    {
+        Application.quitting += LastValue;
+    }
     public void DivideUpgrade()
     {
-        if (CostManager.Instance.cost >= upgradeCost[0])
-        {
-            for (int i = 0; i < SpawnSystem.Instance.soldiers.Count; i++)
-            {
-                if (SpawnSystem.Instance.soldiers[i].layer == 10)
-                {
-                    SpawnSystem.Instance.soldiers[i].GetComponent<PlayerSoldier>().attack *= 2;
-                }
-            }
-            for (int i = 0; i < SpawnSystem.Instance.divideObj.Count; i++)
-            {
-                SpawnSystem.Instance.divideObj[i].GetComponent<PlayerSoldier>().attack *= 2;
-            }
-            CostManager.Instance.cost -= upgradeCost[0];
-            upgradeCost[0] += 100;
-            UIManager.Instance.upgradeText[0].text = "" + upgradeCost[0];
-        }
+        Upgrade(SpawnSystem.Instance.divideObj, 0, 10);
     }
     public void MinusUpgrade()
     {
-        if (CostManager.Instance.cost >= upgradeCost[1])
-        {
-            for (int i = 0; i < SpawnSystem.Instance.soldiers.Count; i++)
-            {
-                if (SpawnSystem.Instance.soldiers[i].layer == 9)
-                {
-                    SpawnSystem.Instance.soldiers[i].GetComponent<PlayerSoldier>().attack *= 2;
-                }
-            }
-            for (int i = 0; i < SpawnSystem.Instance.divideObj.Count; i++)
-            {
-                SpawnSystem.Instance.minusObj[i].GetComponent<PlayerSoldier>().attack *= 2;
-            }
-            CostManager.Instance.cost -= upgradeCost[1];
-            upgradeCost[1] += 100;
-            UIManager.Instance.upgradeText[0].text = "" + upgradeCost[1];
-        }
+        Upgrade(SpawnSystem.Instance.minusObj, 1, 9);
     }
     public void PlusUpgrade()
     {
-        if (CostManager.Instance.cost >= upgradeCost[2])
-        {
-            for (int i = 0; i < SpawnSystem.Instance.soldiers.Count; i++)
-            {
-                if (SpawnSystem.Instance.soldiers[i].layer == 8)
-                {
-                    SpawnSystem.Instance.soldiers[i].GetComponent<PlayerSoldier>().attack *= 2;
-                }
-            }
-            for (int i = 0; i < SpawnSystem.Instance.divideObj.Count; i++)
-            {
-                SpawnSystem.Instance.plusObj[i].GetComponent<PlayerSoldier>().attack *= 2;
-            }
-            CostManager.Instance.cost -= upgradeCost[2];
-            upgradeCost[2] += 100;
-            UIManager.Instance.upgradeText[0].text = "" + upgradeCost[2];
-        }
+        Upgrade(SpawnSystem.Instance.plusObj, 2, 8);
     }
     public void StarUpgrade()
     {
-        if (CostManager.Instance.cost >= upgradeCost[3])
+        Upgrade(SpawnSystem.Instance.starObj, 3, 7);
+    }
+    void LastValue()
+    {
+        Value(SpawnSystem.Instance.divideObj, divide);
+        Value(SpawnSystem.Instance.minusObj, minus);
+        Value(SpawnSystem.Instance.plusObj, plus);
+        Value(SpawnSystem.Instance.starObj, star);
+    }
+    void Value(List<GameObject> obj, List<float> objValue)
+    {
+        for (int i = 0; i < objValue.Count; i++)
+        {
+            obj[i].GetComponent<PlayerSoldier>().attack = objValue[i];
+        }
+    }
+    void StartValue(List<GameObject> obj, List<float> objValue)
+    {
+        for (int i = 0; i < obj.Count; i++)
+        {
+            objValue.Add(i);
+            objValue[i] = obj[i].GetComponent<PlayerSoldier>().attack;
+        }
+    }
+    void Upgrade(List<GameObject> objects, int index, int layer)
+    {
+        if (CostManager.Instance.cost >= upgradeCost[index])
         {
             for (int i = 0; i < SpawnSystem.Instance.soldiers.Count; i++)
             {
-                if (SpawnSystem.Instance.soldiers[i].layer == 7)
+                if (SpawnSystem.Instance.soldiers[i].layer == layer)
                 {
                     SpawnSystem.Instance.soldiers[i].GetComponent<PlayerSoldier>().attack *= 2;
                 }
             }
-            for (int i = 0; i < SpawnSystem.Instance.divideObj.Count; i++)
+            for (int i = 0; i < objects.Count; i++)
             {
-                SpawnSystem.Instance.starObj[i].GetComponent<PlayerSoldier>().attack *= 2;
+                objects[i].GetComponent<PlayerSoldier>().attack *= 2;
             }
-            CostManager.Instance.cost -= upgradeCost[3];
-            upgradeCost[3] += 100;
-            UIManager.Instance.upgradeText[0].text = "" + upgradeCost[3];
+
+            CostManager.Instance.cost -= upgradeCost[index];
+            upgradeCost[index] += 100;
+            UIManager.Instance.upgradeText[index].text = "" + upgradeCost[index];
         }
     }
 }
