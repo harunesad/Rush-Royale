@@ -266,7 +266,7 @@ MonoBehaviour:
   health: 100000
   armor: 5
   moveSpeed: 0.25
-  specialAttack: 2
+  specialAttack: 4
   targetPoint: {fileID: 0}
   healthText: {fileID: 3413604237288467798}
 --- !u!1 &6346232322068884566

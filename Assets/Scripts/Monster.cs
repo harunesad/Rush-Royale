@@ -93,6 +93,15 @@ public class Monster : MonoBehaviour
         {
             UIManager.Instance.time = 20;
             SpecialAttack.instance.playerSoldiers.Clear();
+
+            for (int i = 0; i < SpawnSystem.Instance.soldiers.Count; i++)
+            {
+                if (SpawnSystem.Instance.soldiers[i] == null)
+                {
+                    SpawnSystem.Instance.soldiers.RemoveAt(i);
+                    i--;
+                }
+            }
             SpawnSystem.Instance.ReAttack();
         }
     }
