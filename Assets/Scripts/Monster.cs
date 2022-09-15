@@ -87,9 +87,9 @@ public class Monster : MonoBehaviour
     }
     void Died()
     {
-        SpawnMonsters.Instance.monsters.Remove(gameObject);
+        WaveControl.Instance.monsters.Remove(gameObject);
         UIManager.Instance.CountRemove();
-        if (SpawnMonsters.Instance.waveFinish)
+        if (WaveControl.Instance.waveFinish)
         {
             UIManager.Instance.time = 20;
             SpecialAttack.instance.playerSoldiers.Clear();

@@ -4,73 +4,91 @@ using UnityEngine;
 
 public class PlayerSoldier : MonoBehaviour
 {
-    [SerializeField] PlayerState PlayerMode = PlayerState.Idle;
+    //[SerializeField] PlayerState PlayerMode = PlayerState.Idle;
 
-    public LayerMask checkLayers;
-    public float checkRadius;
+    //public LayerMask checkLayers;
+    //public float checkRadius;
     public float attack;
+    public float attackSpeed;
 
-    public Transform targetMonster;
-    [SerializeField] GameObject finishPoint;
+    //public Transform targetMonster;
+    //[SerializeField] GameObject finishPoint;
     [SerializeField] GameObject bullet;
-    GameObject moveToBullet;
-    protected enum PlayerState
+    Compare compare;
+    //GameObject moveToBullet;
+    //protected enum PlayerState
+    //{
+    //    Idle,
+    //    AttackTarget,
+    //}
+    //private void Awake()
+    //{
+    //    finishPoint = GameObject.Find("FinishPoint");
+    //}
+    private void Start()
     {
-        Idle,
-        AttackTarget,
+        compare = GameObject.Find("FinishPoint").GetComponent<Compare>();
+        InvokeRepeating("SpawnBullet", 1, 0.25f);
     }
-    private void Awake()
+    //private void Update()
+    //{
+    //    Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius, checkLayers);
+    //    Array.Sort(colliders, new DistanceCompare(finishPoint.transform));
+    //    foreach (var item in colliders)
+    //    {
+    //        targetMonster = item.transform;
+    //        break;
+    //    }
+    //    if (targetMonster != null)
+    //    {
+    //        //UpdateMonster();
+    //    }
+    //}
+    //public void UpdateMonster()
+    //{
+    //    switch (PlayerMode)
+    //    {
+    //        case PlayerState.Idle:
+    //            PlayerMode = PlayerState.AttackTarget;
+    //            break;
+    //        case PlayerState.AttackTarget:
+    //            //Lock Enemy
+    //            if (moveToBullet == null)
+    //            {
+    //                PlayerMode = PlayerState.Idle;
+    //            }
+    //            break;
+    //    }
+    //    DoAction();
+    //}
+    //public void DoAction()
+    //{
+    //    switch (PlayerMode)
+    //    {
+    //        case PlayerState.Idle:
+    //            var obj = Instantiate(bullet, transform.position, Quaternion.identity);
+    //            obj.transform.parent = transform;
+    //            moveToBullet = obj;
+    //            break;
+    //        case PlayerState.AttackTarget:
+    //            //AttackMonster();
+    //            //Debug.Log(moveToBullet.name);
+    //            if (moveToBullet != null)
+    //            {
+    //                moveToBullet.GetComponent<BulletControl>().AttackMonster();
+    //            }
+    //            break;
+    //    }
+    //}
+    public void SpawnBullet()
     {
-        finishPoint = GameObject.Find("FinishPoint");
-    }
-    private void Update()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius, checkLayers);
-        Array.Sort(colliders, new DistanceCompare(finishPoint.transform));
-        foreach (var item in colliders)
+        if (compare.nearObj != null)
         {
-            targetMonster = item.transform;
-            break;
+            var obj = Instantiate(bullet, transform.position, Quaternion.identity);
+            obj.transform.parent = transform;
         }
-        if (targetMonster != null)
-        {
-            UpdateMonster();
-        }
-    }
-    public void UpdateMonster()
-    {
-        switch (PlayerMode)
-        {
-            case PlayerState.Idle:
-                PlayerMode = PlayerState.AttackTarget;
-                break;
-            case PlayerState.AttackTarget:
-                //Lock Enemy
-                if (moveToBullet == null)
-                {
-                    PlayerMode = PlayerState.Idle;
-                }
-                break;
-        }
-        DoAction();
-    }
-    public void DoAction()
-    {
-        switch (PlayerMode)
-        {
-            case PlayerState.Idle:
-                var obj = Instantiate(bullet, transform.position, Quaternion.identity);
-                obj.transform.parent = transform;
-                moveToBullet = obj;
-                break;
-            case PlayerState.AttackTarget:
-                //AttackMonster();
-                //Debug.Log(moveToBullet.name);
-                if (moveToBullet != null)
-                {
-                    moveToBullet.GetComponent<BulletControl>().AttackMonster();
-                }
-                break;
-        }
+        //moveToBullet = obj;
+        //if (SpawnMonsters.Instance.monsters.Count == 0)
+        //    Destroy(moveToBullet);
     }
 }

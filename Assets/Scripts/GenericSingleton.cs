@@ -20,7 +20,6 @@ public class GenericSingleton<T> : MonoBehaviour where T : GenericSingleton<T>
             return _instance;
         }
     }
-
     public virtual void Awake()
     {
         if (_instance == null)

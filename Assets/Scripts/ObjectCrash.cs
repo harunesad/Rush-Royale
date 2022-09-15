@@ -6,30 +6,18 @@ public class ObjectCrash : MonoBehaviour
 {
     public bool isMerge = false;
     public bool isCrash = false;
-    public GameObject near;
-    Transform nearObj;
     [SerializeField] LayerMask checkLayers;
     public List<GameObject> others;
     public GameObject crashObj;
-    private void Update()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, Placement.instance.checkRadius, checkLayers);
-        Array.Sort(colliders, new DistanceCompare(transform));
-        foreach (var item in colliders)
-        {
-            nearObj = item.transform;
-            near = nearObj.gameObject;
-            break;
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.GetComponent<Placement>().isClick)
+        if (gameObject.GetComponent<Placement>().isClick && !other.CompareTag("Untagged"))
         {
-            if (other.gameObject != null)
-            {
-                others.Add(other.gameObject);
-            }
+            //if (other.gameObject != null)
+            //{
+            //    others.Add(other.gameObject);
+            //}
+            others.Add(other.gameObject);
         }
     }
     private void OnTriggerStay(Collider other)

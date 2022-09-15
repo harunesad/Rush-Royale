@@ -9,7 +9,7 @@ public class Placement : MonoBehaviour
     public LayerMask layerMask;
     public LayerMask layerMaskBase;
 
-    Transform nearObject;
+    [SerializeField] Transform nearObject;
     public Vector3 mousePos;
 
     public bool isClick = false;
@@ -21,22 +21,18 @@ public class Placement : MonoBehaviour
     float firstPosX, firstPosZ;
     float lastPosX, lastPosZ;
     public int myLayer;
+    Compare compare;
 
     [SerializeField] bool firstPos = false;
     private void Awake()
     {
         instance = this;
         myLayer = gameObject.layer;
+        compare = GetComponent<Compare>();
     }
     void Update()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius, checkLayers);
-        Array.Sort(colliders, new DistanceCompare(transform));
-        foreach (var item in colliders)
-        {
-            nearObject = item.transform;
-            break;
-        }
+        nearObject = compare.nearObj;
         if (Input.GetMouseButtonDown(0))
         {
             posX = transform.position.x;
@@ -66,14 +62,14 @@ public class Placement : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isClick = false;
-            lastPosX = nearObject.position.x;
-            lastPosZ = nearObject.position.z;
             if (!objMove.gameObject.GetComponent<ObjectCrash>().isCrash)
             {
                 Debug.Log("d");
                 if (!firstPos)
                 {
-                    objMove.transform.position = new Vector3(lastPosX, 0.225f, lastPosZ);
+                    lastPosX = nearObject.position.x;
+                    lastPosZ = nearObject.position.z;
+                    objMove.transform.position = new Vector3(firstPosX, 0.225f, firstPosZ);
                 }
                 else
                 {

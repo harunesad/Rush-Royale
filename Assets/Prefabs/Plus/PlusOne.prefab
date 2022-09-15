@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 8430480341813995790}
   - component: {fileID: -2823573228636901310}
   - component: {fileID: -892540829709681550}
+  - component: {fileID: -5205269605398489353}
   m_Layer: 8
   m_Name: PlusOne
   m_TagString: 1
@@ -240,6 +241,7 @@ MonoBehaviour:
   layerMaskBase:
     serializedVersion: 2
     m_Bits: 65544
+  nearObject: {fileID: 0}
   mousePos: {x: 0, y: 0, z: 0}
   isClick: 0
   objMove: {fileID: 8430480341813995787}
@@ -260,7 +262,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMerge: 0
   isCrash: 0
-  near: {fileID: 0}
   checkLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -278,15 +279,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7445c59702ef03a45a74da48f0d7ee6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMode: 0
+  attack: 200
+  attackSpeed: 4
+  bullet: {fileID: 4912979821746414824, guid: 93f7c86f8298bca46a88a453aa109bef, type: 3}
+--- !u!114 &-5205269605398489353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430480341813995787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0a99215fba0be468c99a46de40c40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   checkLayers:
     serializedVersion: 2
-    m_Bits: 131072
+    m_Bits: 8
   checkRadius: 10
-  attack: 200
-  targetMonster: {fileID: 0}
-  finishPoint: {fileID: 0}
-  bullet: {fileID: 4912979821746414824, guid: 93f7c86f8298bca46a88a453aa109bef, type: 3}
+  nearObj: {fileID: 0}
 --- !u!1 &8671478722121472596
 GameObject:
   m_ObjectHideFlags: 0

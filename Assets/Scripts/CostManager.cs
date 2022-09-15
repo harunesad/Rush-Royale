@@ -7,11 +7,7 @@ public class CostManager : GenericSingleton<CostManager>
 {
     public int cost;
     public int costReduce = 10;
-    int costInc = 10;
-    void Start()
-    {
-
-    }
+    public int costInc = 10;
     void Update()
     {
         UIManager.Instance.costText.text = cost.ToString();

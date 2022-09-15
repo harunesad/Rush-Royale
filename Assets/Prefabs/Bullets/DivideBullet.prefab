@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4456449635390929698}
   - component: {fileID: 8990909313015048341}
   - component: {fileID: 2039993558145865685}
+  - component: {fileID: 8324595381981688208}
   m_Layer: 0
   m_Name: DivideBullet
   m_TagString: Untagged
@@ -128,4 +129,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 0
-  attackSpeed: 3
+  attackSpeed: 0
+  target: {fileID: 0}
+  parent: {fileID: 0}
+  checkLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  checkRadius: 0
+--- !u!114 &8324595381981688208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4912979821746414824}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0a99215fba0be468c99a46de40c40c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkLayers:
+    serializedVersion: 2
+    m_Bits: 131072
+  checkRadius: 10
+  nearObj: {fileID: 0}
