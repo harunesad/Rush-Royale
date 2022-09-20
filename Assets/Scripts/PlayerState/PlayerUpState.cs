@@ -6,7 +6,7 @@ public class PlayerUpState : PlayerBaseState
 {
     float lastPosX, lastPosZ;
     Compare compare;
-    Transform nearObject;
+    Transform nearPos;
     public override void EnterState(PlayerStateManager player)
     {
         compare = player.GetComponent<Compare>();
@@ -15,11 +15,11 @@ public class PlayerUpState : PlayerBaseState
             Debug.Log("d");
             if (!player.firstPos)
             {
-                nearObject = compare.nearObj;
-                if (nearObject.GetComponent<Trigger>().isEmpty)
+                nearPos = compare.nearPos;
+                if (nearPos.GetComponent<Trigger>().isEmpty)
                 {
-                    lastPosX = nearObject.position.x;
-                    lastPosZ = nearObject.position.z;
+                    lastPosX = nearPos.position.x;
+                    lastPosZ = nearPos.position.z;
                     player.objMove.transform.position = new Vector3(lastPosX, 0.225f, lastPosZ);
                 }
                 else

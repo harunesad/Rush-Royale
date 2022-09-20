@@ -246,10 +246,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0a99215fba0be468c99a46de40c40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkLayers:
+  layerPos:
     serializedVersion: 2
     m_Bits: 8
+  layerObj:
+    serializedVersion: 2
+    m_Bits: 1024
   checkRadius: 10
+  nearPos: {fileID: 0}
   nearObj: {fileID: 0}
 --- !u!114 &-476224756998678057
 MonoBehaviour:
@@ -268,17 +272,18 @@ MonoBehaviour:
   myLayer: 0
   objMove: {fileID: 8430480341813995787}
   crashObj: {fileID: 0}
+  nearObj: {fileID: 0}
   firstPos: 0
   isMerge: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 65544
-  checkLayers:
-    serializedVersion: 2
-    m_Bits: 1024
   layerMaskBase:
     serializedVersion: 2
     m_Bits: 32768
+  checkLayers:
+    serializedVersion: 2
+    m_Bits: 1024
   others: []
 --- !u!1 &8671478722121472596
 GameObject:

@@ -13,7 +13,7 @@ public class PlayerStateManager : MonoBehaviour
     public bool isMerge = false;
     public LayerMask layerMask;
     public LayerMask layerMaskBase;
-    public LayerMask checkLayers;
+    //public LayerMask checkLayers;
     public List<GameObject> others;
 
     PlayerBaseState currentState;

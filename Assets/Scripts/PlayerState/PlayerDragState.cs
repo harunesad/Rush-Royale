@@ -5,23 +5,25 @@ using UnityEngine;
 public class PlayerDragState : PlayerBaseState
 {
     float posY = 0.35f;
+    Compare compare;
     public override void EnterState(PlayerStateManager player)
     {
+        compare = player.GetComponent<Compare>();
         //layerMaskBase = 15;
     }
     public override void UpdateState(PlayerStateManager player)
     {
         if (Input.GetMouseButton(0))
         {
-            Collider[] colliders = Physics.OverlapSphere(player.transform.position, 10, player.checkLayers);
-            Array.Sort(colliders, new DistanceCompare(player.transform));
-            foreach (var item in colliders)
-            {
-                Debug.Log(item.transform.gameObject.name);
-                player.nearObj = item.transform.gameObject;
-                break;
-            }
-
+            //Collider[] colliders = Physics.OverlapSphere(player.transform.position, 10, player.checkLayers);
+            //Array.Sort(colliders, new DistanceCompare(player.transform));
+            //foreach (var item in colliders)
+            //{
+            //    Debug.Log(item.transform.gameObject.name);
+            //    player.nearObj = item.transform.gameObject;
+            //    break;
+            //}
+            player.nearObj = compare.nearObj.gameObject;
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
