@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 7732979420831973368}
   - component: {fileID: -3068902209133400379}
   - component: {fileID: 7955271800608958921}
-  - component: {fileID: 9194374989920580808}
   - component: {fileID: 3929789632180113238}
   m_Layer: 17
   m_Name: SlowMonster
@@ -252,24 +251,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9194374989920580808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5019888017950112551}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a073cce05c8af44991868b4688532cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1000
-  armor: 2
-  moveSpeed: 1
-  specialAttack: 0
-  targetPoint: {fileID: 0}
-  healthText: {fileID: 3413604237288467798}
 --- !u!114 &3929789632180113238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +267,7 @@ MonoBehaviour:
   health: 1000
   armor: 2
   moveSpeed: 1
+  specialAttack: 0
 --- !u!1 &6346232322068884566
 GameObject:
   m_ObjectHideFlags: 0

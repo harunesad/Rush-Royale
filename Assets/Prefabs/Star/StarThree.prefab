@@ -114,10 +114,9 @@ GameObject:
   - component: {fileID: 9073469176543197539}
   - component: {fileID: 301206212894277326}
   - component: {fileID: -8941281240146854807}
-  - component: {fileID: 6073119702561508577}
-  - component: {fileID: 2851926886445821478}
   - component: {fileID: -5131669624505661950}
   - component: {fileID: 6249693521250878336}
+  - component: {fileID: -6758334274783085586}
   m_Layer: 7
   m_Name: StarThree
   m_TagString: 3
@@ -220,53 +219,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6073119702561508577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4069298050355158130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc9809c3cec291478862e4cba823602, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 32768
-  layerMaskBase:
-    serializedVersion: 2
-    m_Bits: 65544
-  nearObject: {fileID: 0}
-  mousePos: {x: 0, y: 0, z: 0}
-  isClick: 0
-  objMove: {fileID: 4069298050355158130}
-  checkRadius: 10
-  myLayer: 0
-  firstPos: 0
---- !u!114 &2851926886445821478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4069298050355158130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366805ff4f2656a42ae44bb16b057b26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMerge: 0
-  isCrash: 0
-  checkLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  others: []
-  crashObj: {fileID: 0}
 --- !u!114 &-5131669624505661950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +251,35 @@ MonoBehaviour:
     m_Bits: 8
   checkRadius: 10
   nearObj: {fileID: 0}
+--- !u!114 &-6758334274783085586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069298050355158130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce6599750d4d384e9436afae18698ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posX: 0
+  posZ: 0
+  myLayer: 0
+  objMove: {fileID: 4069298050355158130}
+  crashObj: {fileID: 0}
+  firstPos: 0
+  isMerge: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 65544
+  checkLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  layerMaskBase:
+    serializedVersion: 2
+    m_Bits: 32768
+  others: []
 --- !u!1 &9144861888773275435
 GameObject:
   m_ObjectHideFlags: 0

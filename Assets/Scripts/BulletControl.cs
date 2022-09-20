@@ -14,8 +14,8 @@ public class BulletControl : MonoBehaviour
     }
     void Start()
     {
-        attack = transform.parent.GetComponent<PlayerSoldier>().attack;
-        attackSpeed = transform.parent.GetComponent<PlayerSoldier>().attackSpeed;
+        attack = transform.parent.GetComponent<BulletSpawn>().attack;
+        attackSpeed = transform.parent.GetComponent<BulletSpawn>().attackSpeed;
         transform.parent = null;
 
         target = compare.nearObj.gameObject;

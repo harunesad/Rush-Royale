@@ -30,7 +30,7 @@ public class SpecialAttack : MonoBehaviour
                     }
                 }
                 int sol = Random.Range(0, playerSoldiers.Count);
-                playerSoldiers[sol].GetComponent<PlayerSoldier>().enabled = false;
+                playerSoldiers[sol].GetComponent<BulletSpawn>().enabled = false;
                 playerSoldiers.RemoveAt(sol);
                 break;
             case 3:
@@ -57,12 +57,12 @@ public class SpecialAttack : MonoBehaviour
             {
                 if (SpawnSystem.Instance.soldiers[i].layer == layer)
                 {
-                    SpawnSystem.Instance.soldiers[i].GetComponent<PlayerSoldier>().attack /= 2;
+                    SpawnSystem.Instance.soldiers[i].GetComponent<BulletSpawn>().attack /= 2;
                 }
             }
             for (int i = 0; i < objects.Count; i++)
             {
-                objects[i].GetComponent<PlayerSoldier>().attack /= 2;
+                objects[i].GetComponent<BulletSpawn>().attack /= 2;
             }
 
             UpgradeSystem.Instance.upgradeCost[index] -= 100;

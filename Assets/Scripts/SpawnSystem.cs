@@ -31,7 +31,7 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
     {
         for (int i = 0; i < soldiers.Count; i++)
         {
-            soldiers[i].GetComponent<PlayerSoldier>().enabled = true;
+            soldiers[i].GetComponent<BulletSpawn>().enabled = true;
         }
     }
     public void Spawn()

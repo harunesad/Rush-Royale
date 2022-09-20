@@ -54,7 +54,7 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
     {
         for (int i = 0; i < objValue.Count; i++)
         {
-            obj[i].GetComponent<PlayerSoldier>().attack = objValue[i];
+            obj[i].GetComponent<BulletSpawn>().attack = objValue[i];
         }
     }
     void StartValue(List<GameObject> obj, List<float> objValue)
@@ -62,7 +62,7 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
         for (int i = 0; i < obj.Count; i++)
         {
             objValue.Add(i);
-            objValue[i] = obj[i].GetComponent<PlayerSoldier>().attack;
+            objValue[i] = obj[i].GetComponent<BulletSpawn>().attack;
         }
     }
     void Upgrade(List<GameObject> objects, int index, int layer)
@@ -73,12 +73,12 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
             {
                 if (SpawnSystem.Instance.soldiers[i].layer == layer)
                 {
-                    SpawnSystem.Instance.soldiers[i].GetComponent<PlayerSoldier>().attack *= 2;
+                    SpawnSystem.Instance.soldiers[i].GetComponent<BulletSpawn>().attack *= 2;
                 }
             }
             for (int i = 0; i < objects.Count; i++)
             {
-                objects[i].GetComponent<PlayerSoldier>().attack *= 2;
+                objects[i].GetComponent<BulletSpawn>().attack *= 2;
             }
 
             CostManager.Instance.cost -= upgradeCost[index];
