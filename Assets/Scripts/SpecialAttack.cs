@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpecialAttack : MonoBehaviour
 {
+    [SerializeField] PlayerSoldiers soldiers;
     public static SpecialAttack instance;
     public List<GameObject> playerSoldiers;
     private void Awake()
@@ -34,16 +35,16 @@ public class SpecialAttack : MonoBehaviour
                 playerSoldiers.RemoveAt(sol);
                 break;
             case 3:
-                UpgradeRemove(SpawnSystem.Instance.divideObj, 0, 10);
-                UpgradeRemove(SpawnSystem.Instance.minusObj, 1, 9);
-                UpgradeRemove(SpawnSystem.Instance.plusObj, 2, 8);
-                UpgradeRemove(SpawnSystem.Instance.starObj, 3, 7);
+                UpgradeRemove(soldiers.divideObj, 0, 10);
+                UpgradeRemove(soldiers.minusObj, 1, 9);
+                UpgradeRemove(soldiers.plusObj, 2, 8);
+                UpgradeRemove(soldiers.starObj, 3, 7);
                 break;
             case 4:
-                RemoveLevel(SpawnSystem.Instance.divideObj);
-                RemoveLevel(SpawnSystem.Instance.minusObj);
-                RemoveLevel(SpawnSystem.Instance.plusObj);
-                RemoveLevel(SpawnSystem.Instance.starObj);
+                RemoveLevel(soldiers.divideObj);
+                RemoveLevel(soldiers.minusObj);
+                RemoveLevel(soldiers.plusObj);
+                RemoveLevel(soldiers.starObj);
                 break;
             default:
                 break;
@@ -89,21 +90,11 @@ public class SpecialAttack : MonoBehaviour
                     }
                     else
                     {
+                        SpawnSystem.Instance.spawnPoints.Add(SpawnSystem.Instance.soldiers[i].GetComponent<PlayerStateManager>().groundObj);
                         Destroy(SpawnSystem.Instance.soldiers[i].gameObject);
-                        //SpawnSystem.Instance.soldiers.RemoveAt(i);
                     }
                 }
             }
         }
-    }
-    private void Update()
-    {
-        //for (int i = 0; i < SpawnSystem.Instance.soldiers.Count; i++)
-        //{
-        //    if (SpawnSystem.Instance.soldiers[i] == null)
-        //    {
-        //        SpawnSystem.Instance.soldiers.RemoveAt(i);
-        //    }
-        //}
     }
 }

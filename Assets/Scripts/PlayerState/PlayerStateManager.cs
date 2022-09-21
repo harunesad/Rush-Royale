@@ -9,11 +9,12 @@ public class PlayerStateManager : MonoBehaviour
     public GameObject objMove;
     public GameObject crashObj;
     public GameObject nearObj;
+    public GameObject groundObj;
     public bool firstPos = false;
     public bool isMerge = false;
     public LayerMask layerMask;
     public LayerMask layerMaskBase;
-    //public LayerMask checkLayers;
+    public PlayerSoldiers soldiers;
     public List<GameObject> others;
 
     PlayerBaseState currentState;

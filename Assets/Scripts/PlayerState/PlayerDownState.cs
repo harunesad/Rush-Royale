@@ -33,7 +33,11 @@ public class PlayerDownState : PlayerBaseState
     }
     public override void OnTriggerEnter(PlayerStateManager player, Collider other)
     {
-
+        GameObject go = other.gameObject;
+        if (go.CompareTag("Ground"))
+        {
+            player.groundObj = go;
+        }
     }
     public override void OnTriggerStay(PlayerStateManager player, Collider other)
     {

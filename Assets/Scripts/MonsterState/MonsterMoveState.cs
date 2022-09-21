@@ -27,14 +27,18 @@ public class MonsterMoveState : MonsterBaseState
         }
         else
         {
+            monster.destroy = true;
             monster.SwitchState(monster.DieState);
         }
     }
-    public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
+    public override void OnTriggerEnter(MonsterStateManager monster, Collider other)
     {
-        GameObject other = collision.gameObject;
-        if (other.CompareTag("Finish"))
+        Debug.Log("aaaaaa");
+        GameObject otherObj = other.gameObject;
+        if (otherObj.CompareTag("Finish"))
         {
+            monster.destroy = false;
+            Debug.Log("sdassa");
             monster.SwitchState(monster.DieState);
         }
     }

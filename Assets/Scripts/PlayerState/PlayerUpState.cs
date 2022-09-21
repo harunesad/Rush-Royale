@@ -34,29 +34,16 @@ public class PlayerUpState : PlayerBaseState
         }
         else
         {
-            //if (!player.objMove.gameObject.GetComponent<PlayerStateManager>().isMerge)
-            //{
-            //    Debug.Log("i");
-            //    player.objMove.transform.position = new Vector3(player.posX, 0.225f, player.posZ);
-            //}
-            //if (player.objMove.gameObject.GetComponent<PlayerStateManager>().isMerge)
-            //{
-            //    Debug.Log("F");
-            //    SpawnNextLevel(SpawnSystem.Instance.starObj, 11, player);
-            //    SpawnNextLevel(SpawnSystem.Instance.plusObj, 12, player);
-            //    SpawnNextLevel(SpawnSystem.Instance.minusObj, 13, player);
-            //    SpawnNextLevel(SpawnSystem.Instance.divideObj, 14, player);
-            //}
-            SpawnNextLevel(SpawnSystem.Instance.starObj, 11, player);
-            SpawnNextLevel(SpawnSystem.Instance.plusObj, 12, player);
-            SpawnNextLevel(SpawnSystem.Instance.minusObj, 13, player);
-            SpawnNextLevel(SpawnSystem.Instance.divideObj, 14, player);
+            SpawnNextLevel(player.soldiers.starObj, 11, player);
+            SpawnNextLevel(player.soldiers.plusObj, 12, player);
+            SpawnNextLevel(player.soldiers.minusObj, 13, player);
+            SpawnNextLevel(player.soldiers.divideObj, 14, player);
         }
         player.SwitchState(player.DownState);
     }
     public override void UpdateState(PlayerStateManager player)
     {
-        //nearObject = compare.nearObj;
+
     }
     void SpawnNextLevel(List<GameObject> obj, int layerCount, PlayerStateManager player)
     {

@@ -11,6 +11,8 @@ public class MonsterStateManager : MonoBehaviour
     public float armor;
     public float moveSpeed;
     public int specialAttack;
+    public int costIncrease;
+    public bool destroy;
 
     MonsterBaseState currentState;
     public MonsterMoveState MoveState = new MonsterMoveState();
@@ -20,9 +22,9 @@ public class MonsterStateManager : MonoBehaviour
         currentState = MoveState;
         currentState.EnterState(this);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        currentState.OnCollisionEnter(this, collision);
+        currentState.OnTriggerEnter(this, other);
     }
     void Update()
     {

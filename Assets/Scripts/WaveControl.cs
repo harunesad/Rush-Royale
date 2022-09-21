@@ -18,6 +18,7 @@ public class WaveControl : GenericSingleton<WaveControl>
             waveFinish = true;
             monsters.Clear();
             SpawnMonsters.Instance.SpawnRandomBoss();
+            MonsterHealthManager.Instance.HealthIncrease();
         }
         if(UIManager.Instance.time > 0)
         {

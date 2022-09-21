@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class UpgradeSystem : GenericSingleton<UpgradeSystem>
 {
+    [SerializeField] PlayerSoldiers soldiers;
     public List<int> upgradeCost;
     public List<float> divide;
     public List<float> minus;
     public List<float> plus;
     public List<float> star;
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         for (int i = 0; i < upgradeCost.Count; i++)
         {
             UIManager.Instance.upgradeText[i].text = "" + upgradeCost[i];
@@ -18,10 +20,10 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
     }
     private void Start()
     {
-        StartValue(SpawnSystem.Instance.divideObj, divide);
-        StartValue(SpawnSystem.Instance.minusObj, minus);
-        StartValue(SpawnSystem.Instance.plusObj, plus);
-        StartValue(SpawnSystem.Instance.starObj, star);
+        StartValue(soldiers.divideObj, divide);
+        StartValue(soldiers.minusObj, minus);
+        StartValue(soldiers.plusObj, plus);
+        StartValue(soldiers.starObj, star);
     }
     private void Update()
     {
@@ -29,26 +31,26 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
     }
     public void DivideUpgrade()
     {
-        Upgrade(SpawnSystem.Instance.divideObj, 0, 10);
+        Upgrade(soldiers.divideObj, 0, 10);
     }
     public void MinusUpgrade()
     {
-        Upgrade(SpawnSystem.Instance.minusObj, 1, 9);
+        Upgrade(soldiers.minusObj, 1, 9);
     }
     public void PlusUpgrade()
     {
-        Upgrade(SpawnSystem.Instance.plusObj, 2, 8);
+        Upgrade(soldiers.plusObj, 2, 8);
     }
     public void StarUpgrade()
     {
-        Upgrade(SpawnSystem.Instance.starObj, 3, 7);
+        Upgrade(soldiers.starObj, 3, 7);
     }
     void LastValue()
     {
-        Value(SpawnSystem.Instance.divideObj, divide);
-        Value(SpawnSystem.Instance.minusObj, minus);
-        Value(SpawnSystem.Instance.plusObj, plus);
-        Value(SpawnSystem.Instance.starObj, star);
+        Value(soldiers.divideObj, divide);
+        Value(soldiers.minusObj, minus);
+        Value(soldiers.plusObj, plus);
+        Value(soldiers.starObj, star);
     }
     void Value(List<GameObject> obj, List<float> objValue)
     {

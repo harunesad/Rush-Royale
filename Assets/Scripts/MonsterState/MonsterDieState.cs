@@ -6,8 +6,31 @@ public class MonsterDieState : MonsterBaseState
 {
     public override void EnterState(MonsterStateManager monster)
     {
-        CostManager.Instance.KillMonster();
-        WaveControl.Instance.monsters.Remove(monster.gameObject);
+        if (monster.destroy)
+        {
+            Die(monster.gameObject);
+            CostManager.Instance.KillMonster(monster.costIncrease);
+            if (WaveControl.Instance.waveFinish)
+            {
+                CostManager.Instance.CostInc();
+            }
+        }
+        else
+        {
+            Die(monster.gameObject);
+        }
+    }
+    public override void UpdateState(MonsterStateManager monster)
+    {
+
+    }
+    public override void OnTriggerEnter(MonsterStateManager monster, Collider other)
+    {
+
+    }
+    void Die(GameObject obj)
+    {
+        WaveControl.Instance.monsters.Remove(obj);
         UIManager.Instance.CountRemove();
         if (WaveControl.Instance.waveFinish)
         {
@@ -24,14 +47,6 @@ public class MonsterDieState : MonsterBaseState
             }
             SpawnSystem.Instance.ReAttack();
         }
-        Object.Destroy(monster.gameObject);
-    }
-    public override void UpdateState(MonsterStateManager monster)
-    {
-
-    }
-    public override void OnCollisionEnter(MonsterStateManager monster, Collision collision)
-    {
-
+        Object.Destroy(obj);
     }
 }
