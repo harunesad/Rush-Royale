@@ -6,10 +6,6 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
 {
     public List<GameObject> soldiers;
     public List<GameObject> spawnPoints;
-    //public List<GameObject> starObj;
-    //public List<GameObject> plusObj;
-    //public List<GameObject> minusObj;
-    //public List<GameObject> divideObj;
     [SerializeField] List<GameObject> spawnObj;
     Vector3 pos;
     public void ReAttack()

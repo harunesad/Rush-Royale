@@ -40,7 +40,6 @@ public class GridManager : MonoBehaviour
         for (int i = 0; i < horizontalEdgeColumnLength * horizontalEdgeRowLength; i++)
         {
             var side = Instantiate(edgeVertical, new Vector3(verticalEdgeXStart, 0.001f, verticalEdgeZStart + (verticalEdgeSpace * (i % horizontalEdgeRowLength))), Quaternion.identity);
-            //side.layer = 3;
             side.transform.parent = gameObject.transform;
             side.layer = 16;
         }
@@ -48,7 +47,6 @@ public class GridManager : MonoBehaviour
         for (int i = 0; i < verticalEdgeColumnLength * verticalEdgeRowLength; i++)
         {
             var side = Instantiate(horizontalEdge, new Vector3(horizontalEdgeXStart + ((horizontalEdgeSpace) * (i % verticalEdgeRowLength)), 0.001f, horizontalEdgeZStart), horizontalEdge.transform.rotation);
-            //side.layer = 3;
             side.transform.parent = gameObject.transform;
             side.layer = 16;
         }

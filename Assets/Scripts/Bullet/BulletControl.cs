@@ -22,19 +22,16 @@ public class BulletControl : MonoBehaviour
     }
     void Update()
     {
-        AttackMonster();
+        AttackMonster(target ? target : gameObject);
     }
-    public void AttackMonster()
+    public void AttackMonster(GameObject obj)
     {
         if (target == null)
         {
             Destroy(gameObject);
         }
-        else
-        {
-            transform.LookAt(target.transform);
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * attackSpeed);
-        }
+        transform.LookAt(obj.transform);
+        transform.position = Vector3.MoveTowards(transform.position, obj.transform.position, Time.deltaTime * attackSpeed);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -43,10 +40,6 @@ public class BulletControl : MonoBehaviour
         {
             monster.health -= attack / monster.armor;
             Destroy(gameObject);
-        }
-        if (monster != null && monster.health <= 0)
-        {
-            monster.health = 0;
         }
     }
 }

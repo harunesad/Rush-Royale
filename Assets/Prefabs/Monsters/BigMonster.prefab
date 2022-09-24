@@ -265,10 +265,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 3413604237288467798}
   health: 10000
-  armor: 3
+  armor: 5
   moveSpeed: 0.5
   specialAttack: 0
-  costIncrease: 25
+  costIncrease: 20
   destroy: 0
 --- !u!1 &6346232322068884566
 GameObject:

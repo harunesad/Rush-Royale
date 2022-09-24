@@ -10,7 +10,7 @@ public class PlayerStateManager : MonoBehaviour
     public GameObject crashObj;
     public GameObject nearObj;
     public GameObject groundObj;
-    public bool firstPos = false;
+    public GameObject colObj;
     public bool isMerge = false;
     public LayerMask layerMask;
     public LayerMask layerMaskBase;
@@ -41,6 +41,18 @@ public class PlayerStateManager : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         currentState.OnTriggerExit(this, other);
+    }
+    private void OnMouseDown()
+    {
+        currentState.OnMouseDown(this);
+    }
+    private void OnMouseDrag()
+    {
+        currentState.OnMouseDrag(this);
+    }
+    private void OnMouseUp()
+    {
+        currentState.OnMouseUp(this);
     }
     void Update()
     {

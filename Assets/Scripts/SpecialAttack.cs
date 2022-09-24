@@ -92,6 +92,9 @@ public class SpecialAttack : MonoBehaviour
                     {
                         SpawnSystem.Instance.spawnPoints.Add(SpawnSystem.Instance.soldiers[i].GetComponent<PlayerStateManager>().groundObj);
                         Destroy(SpawnSystem.Instance.soldiers[i].gameObject);
+                        GameObject ground = SpawnSystem.Instance.soldiers[i].GetComponent<PlayerStateManager>().groundObj;
+                        ground.GetComponent<Trigger>().isEmpty = true;
+                        ground.layer = 3;
                     }
                 }
             }

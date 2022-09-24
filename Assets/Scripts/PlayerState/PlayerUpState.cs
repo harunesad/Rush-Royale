@@ -5,32 +5,11 @@ using UnityEngine;
 public class PlayerUpState : PlayerBaseState
 {
     float lastPosX, lastPosZ;
-    Compare compare;
-    Transform nearPos;
     public override void EnterState(PlayerStateManager player)
     {
-        compare = player.GetComponent<Compare>();
         if (!player.objMove.gameObject.GetComponent<PlayerStateManager>().isMerge)
         {
-            Debug.Log("d");
-            if (!player.firstPos)
-            {
-                nearPos = compare.nearPos;
-                if (nearPos.GetComponent<Trigger>().isEmpty)
-                {
-                    lastPosX = nearPos.position.x;
-                    lastPosZ = nearPos.position.z;
-                    player.objMove.transform.position = new Vector3(lastPosX, 0.225f, lastPosZ);
-                }
-                else
-                {
-                    player.objMove.transform.position = new Vector3(player.posX, 0.225f, player.posZ);
-                }
-            }
-            else
-            {
-                player.objMove.transform.position = new Vector3(player.posX, 0.225f, player.posZ);
-            }
+            player.objMove.transform.position = new Vector3(player.posX, 0.225f, player.posZ);
         }
         else
         {
@@ -73,5 +52,20 @@ public class PlayerUpState : PlayerBaseState
     public override void OnTriggerExit(PlayerStateManager player, Collider other)
     {
         
+    }
+
+    public override void OnMouseDown(PlayerStateManager player)
+    {
+
+    }
+
+    public override void OnMouseDrag(PlayerStateManager player)
+    {
+
+    }
+
+    public override void OnMouseUp(PlayerStateManager player)
+    {
+
     }
 }

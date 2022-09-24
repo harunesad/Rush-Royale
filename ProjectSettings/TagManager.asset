@@ -10,6 +10,7 @@ TagManager:
   - 4
   - Monster
   - Ground
+  - Target
   layers:
   - Default
   - TransparentFX

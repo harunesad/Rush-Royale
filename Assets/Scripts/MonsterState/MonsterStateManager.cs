@@ -28,7 +28,8 @@ public class MonsterStateManager : MonoBehaviour
     }
     void Update()
     {
-        healthText.text = health.ToString();
+        int healthRound = (int)health;
+        healthText.text = healthRound.ToString();
         currentState.UpdateState(this);
     }
     public void SwitchState(MonsterBaseState state)

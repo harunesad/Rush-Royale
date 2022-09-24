@@ -8,12 +8,8 @@ public class MonsterDieState : MonsterBaseState
     {
         if (monster.destroy)
         {
-            Die(monster.gameObject);
             CostManager.Instance.KillMonster(monster.costIncrease);
-            if (WaveControl.Instance.waveFinish)
-            {
-                CostManager.Instance.CostInc();
-            }
+            Die(monster.gameObject);
         }
         else
         {
@@ -46,6 +42,7 @@ public class MonsterDieState : MonsterBaseState
                 }
             }
             SpawnSystem.Instance.ReAttack();
+            CostManager.Instance.CostInc();
         }
         Object.Destroy(obj);
     }
