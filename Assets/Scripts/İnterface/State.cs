@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class State : MonoBehaviour,IState
+public abstract class State : MonoBehaviour
 {
-    //public IState ýstate { get; set; }
     public void Run(bool state)
     {
         if (state)

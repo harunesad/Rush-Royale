@@ -33,7 +33,7 @@ public class PlayerDownState : PlayerBaseState
 
     public override void OnMouseDown(PlayerStateManager player)
     {
-        if (player.objMove.tag == "4")
+        if (player.objMove.tag == "4" || Time.timeScale == 0)
         {
             player.enabled = false;
             return;

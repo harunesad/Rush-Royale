@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MonsterMoveState : MonsterBaseState
 {
+    GameObject finish;
     public override void EnterState(MonsterStateManager monster)
     {
+        finish = GameObject.Find("FinishPoint");
         SpecialAttack.instance.Special(monster.specialAttack);
     }
     public override void UpdateState(MonsterStateManager monster)
@@ -20,12 +23,12 @@ public class MonsterMoveState : MonsterBaseState
     public override void OnTriggerEnter(MonsterStateManager monster, Collider other)
     {
         GameObject otherObj = other.gameObject;
-        if (otherObj.CompareTag("Target"))
+        if (otherObj.layer == 19)
         {
             monster.transform.GetChild(0).rotation = Quaternion.Euler(0, -90, 0);
             monster.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
-        if (otherObj.CompareTag("Finish"))
+        if (otherObj.layer == 18)
         {
             monster.destroy = false;
             monster.SwitchState(monster.DieState);

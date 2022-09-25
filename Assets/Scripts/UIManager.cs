@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UIManager :  State, IState
+public class UIManager :  State
 {
     public static UIManager Instance;
     public TextMeshProUGUI monsterCount;
@@ -11,6 +11,7 @@ public class UIManager :  State, IState
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI costReduceText;
+    public TextMeshProUGUI lifeText;
     public List<TextMeshProUGUI> upgradeText;
 
     public float time = 40;
@@ -36,6 +37,17 @@ public class UIManager :  State, IState
     public void CountAdd()
     {
         monsterCount.text = monsterCount.text + count;
+    }
+    public void LifeReduce()
+    {
+        string currentLife = lifeText.text;
+        currentLife = currentLife.Substring(0, currentLife.Length - 1);
+        lifeText.text = currentLife;
+        _ = currentLife.Length == 0 ? Time.timeScale = 0 : Time.timeScale = 1;
+        //if (currentLife.Length == 0)
+        //{
+        //    Time.timeScale = 0;
+        //}
     }
     public void CountRemove()
     {

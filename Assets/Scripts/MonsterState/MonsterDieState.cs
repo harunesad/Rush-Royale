@@ -13,6 +13,7 @@ public class MonsterDieState : MonsterBaseState
         }
         else
         {
+            UIManager.Instance.LifeReduce();
             Die(monster.gameObject);
         }
     }

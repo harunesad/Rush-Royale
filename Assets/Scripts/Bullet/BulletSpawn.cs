@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawn : MonoBehaviour
+public class BulletSpawn : State , IState
 {
     public float attack;
     public float attackSpeed;
@@ -16,10 +16,22 @@ public class BulletSpawn : MonoBehaviour
     }
     public void SpawnBullet()
     {
-        if (compare.nearObj != null)
-        {
-            var obj = Instantiate(bullet, transform.position, Quaternion.identity);
-            obj.transform.parent = transform;
-        }
+        //if (compare.nearObj != null)
+        //{
+        //    var obj = Instantiate(bullet, transform.position, Quaternion.identity);
+        //    obj.transform.parent = transform;
+        //}
+        Run(compare.nearObj != null);
+    }
+
+    public override void StateTrue()
+    {
+        var obj = Instantiate(bullet, transform.position, Quaternion.identity);
+        obj.transform.parent = transform;
+    }
+
+    public override void StateFalse()
+    {
+        return;
     }
 }

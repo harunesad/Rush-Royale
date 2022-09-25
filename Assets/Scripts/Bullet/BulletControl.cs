@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControl : MonoBehaviour
+public class BulletControl : State, IState
 {
     public float attack;
     public float attackSpeed;
@@ -22,7 +22,8 @@ public class BulletControl : MonoBehaviour
     }
     void Update()
     {
-        AttackMonster(target ? target : gameObject);
+        Run(target == null);
+        //AttackMonster(target ? target : gameObject);
     }
     public void AttackMonster(GameObject obj)
     {
@@ -41,5 +42,17 @@ public class BulletControl : MonoBehaviour
             monster.health -= attack / monster.armor;
             Destroy(gameObject);
         }
+    }
+
+    public override void StateTrue()
+    {
+        Destroy(gameObject);
+    }
+
+    public override void StateFalse()
+    {
+        transform.LookAt(target.transform);
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * attackSpeed);
+
     }
 }

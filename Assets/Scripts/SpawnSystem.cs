@@ -17,7 +17,7 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
     }
     public void Spawn()
     {
-        if (spawnPoints.Count > 0 && CostManager.Instance.cost >= CostManager.Instance.costReduce)
+        if (spawnPoints.Count > 0 && CostManager.Instance.cost >= CostManager.Instance.costReduce && Time.timeScale == 1)
         {
             int randomIndex = Random.Range(0, spawnPoints.Count);
             for (int i = randomIndex; i < randomIndex + 1; i++)

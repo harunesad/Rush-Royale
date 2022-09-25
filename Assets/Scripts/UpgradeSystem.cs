@@ -69,7 +69,7 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
     }
     void Upgrade(List<GameObject> objects, int index, int layer)
     {
-        if (CostManager.Instance.cost >= upgradeCost[index])
+        if (CostManager.Instance.cost >= upgradeCost[index] && Time.timeScale == 1)
         {
             for (int i = 0; i < SpawnSystem.Instance.soldiers.Count; i++)
             {
