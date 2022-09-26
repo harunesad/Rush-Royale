@@ -274,7 +274,7 @@ MonoBehaviour:
   crashObj: {fileID: 0}
   nearObj: {fileID: 0}
   groundObj: {fileID: 0}
-  firstPos: 0
+  colObj: {fileID: 0}
   isMerge: 0
   layerMask:
     serializedVersion: 2
@@ -282,7 +282,7 @@ MonoBehaviour:
   layerMaskBase:
     serializedVersion: 2
     m_Bits: 32768
-  soldiers: {fileID: 11400000, guid: 44863ee8405d320468117a98a05eb7c4, type: 2}
+  soldiers: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
   others: []
 --- !u!1 &8671478722121472596
 GameObject:

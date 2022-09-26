@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UpgradeSystem : GenericSingleton<UpgradeSystem>
 {
     [SerializeField] PlayerSoldiers soldiers;
     public List<int> upgradeCost;
+    public List<TextMeshProUGUI> upgradeText;
     public List<float> divide;
     public List<float> minus;
     public List<float> plus;
@@ -15,7 +17,7 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
         base.Awake();
         for (int i = 0; i < upgradeCost.Count; i++)
         {
-            UIManager.Instance.upgradeText[i].text = "" + upgradeCost[i];
+            upgradeText[i].text = "" + upgradeCost[i];
         }
     }
     private void Start()
@@ -24,6 +26,12 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
         StartValue(soldiers.minusObj, minus);
         StartValue(soldiers.plusObj, plus);
         StartValue(soldiers.starObj, star);
+        SpecialAttack.removeUpgrade += RemoveUpgrade;
+    }
+    void RemoveUpgrade(int index)
+    {
+        upgradeCost[index] -= 100;
+        upgradeText[index].text = "" + upgradeCost[index];
     }
     private void Update()
     {
@@ -85,7 +93,7 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
 
             CostManager.Instance.cost -= upgradeCost[index];
             upgradeCost[index] += 100;
-            UIManager.Instance.upgradeText[index].text = "" + upgradeCost[index];
+            upgradeText[index].text = "" + upgradeCost[index];
         }
     }
 }

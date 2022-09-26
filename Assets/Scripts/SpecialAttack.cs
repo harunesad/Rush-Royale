@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SpecialAttack : MonoBehaviour
 {
+    public delegate void Remove(int index);
+    public static event Remove remove;
+    public delegate void RemoveUpgrade(int index);
+    public static event RemoveUpgrade removeUpgrade;
     [SerializeField] PlayerSoldiers soldiers;
     public static SpecialAttack instance;
     public List<GameObject> playerSoldiers;
@@ -19,8 +23,7 @@ public class SpecialAttack : MonoBehaviour
                 break;
             case 1:
                 int playerSol = Random.Range(0, SpawnSystem.Instance.soldiers.Count);
-                Destroy(SpawnSystem.Instance.soldiers[playerSol].gameObject);
-                SpawnSystem.Instance.soldiers.RemoveAt(playerSol);
+                remove(playerSol);
                 break;
             case 2:
                 if (playerSoldiers.Count == 0)
@@ -66,8 +69,9 @@ public class SpecialAttack : MonoBehaviour
                 objects[i].GetComponent<BulletSpawn>().attack /= 2;
             }
 
-            UpgradeSystem.Instance.upgradeCost[index] -= 100;
-            UIManager.Instance.upgradeText[index].text = "" + UpgradeSystem.Instance.upgradeCost[index];
+            //UpgradeSystem.Instance.upgradeCost[index] -= 100;
+            removeUpgrade(index);
+            //UIManager.Instance.upgradeText[index].text = "" + UpgradeSystem.Instance.upgradeCost[index];
         }
     }
     void RemoveLevel(List<GameObject> obj)

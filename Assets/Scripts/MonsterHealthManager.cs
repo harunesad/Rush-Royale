@@ -6,17 +6,18 @@ public class MonsterHealthManager : GenericSingleton<MonsterHealthManager>
 {
     public List<float> monsterHealth;
     public List<float> bossHealth;
+    [SerializeField] MonsterSoldiers soldiers;
     void Start()
     {
-        for (int i = 0; i < SpawnMonsters.Instance.spawnMonsters.Count; i++)
+        for (int i = 0; i < soldiers.spawnMonsters.Count; i++)
         {
             monsterHealth.Add(i);
-            monsterHealth[i] = SpawnMonsters.Instance.spawnMonsters[i].GetComponent<MonsterStateManager>().health;
+            monsterHealth[i] = soldiers.spawnMonsters[i].GetComponent<MonsterStateManager>().health;
         }
-        for (int i = 0; i < SpawnMonsters.Instance.bossMonster.Count; i++)
+        for (int i = 0; i < soldiers.bossMonster.Count; i++)
         {
             bossHealth.Add(i);
-            bossHealth[i] = SpawnMonsters.Instance.bossMonster[i].GetComponent<MonsterStateManager>().health;
+            bossHealth[i] = soldiers.bossMonster[i].GetComponent<MonsterStateManager>().health;
         }
     }
     void Update()
@@ -25,24 +26,24 @@ public class MonsterHealthManager : GenericSingleton<MonsterHealthManager>
     }
     public void HealthIncrease()
     {
-        for (int i = 0; i < SpawnMonsters.Instance.spawnMonsters.Count; i++)
+        for (int i = 0; i < soldiers.spawnMonsters.Count; i++)
         {
-            SpawnMonsters.Instance.spawnMonsters[i].GetComponent<MonsterStateManager>().health *= 2;
+            soldiers.spawnMonsters[i].GetComponent<MonsterStateManager>().health *= 2;
         }
-        for (int i = 0; i < SpawnMonsters.Instance.bossMonster.Count; i++)
+        for (int i = 0; i < soldiers.bossMonster.Count; i++)
         {
-            SpawnMonsters.Instance.bossMonster[i].GetComponent<MonsterStateManager>().health *= 2;
+            soldiers.bossMonster[i].GetComponent<MonsterStateManager>().health *= 2;
         }
     }
     void ValueChanges()
     {
         for (int i = 0; i < monsterHealth.Count; i++)
         {
-            SpawnMonsters.Instance.spawnMonsters[i].GetComponent<MonsterStateManager>().health = monsterHealth[i];
+            soldiers.spawnMonsters[i].GetComponent<MonsterStateManager>().health = monsterHealth[i];
         }
         for (int i = 0; i < bossHealth.Count; i++)
         {
-            SpawnMonsters.Instance.bossMonster[i].GetComponent<MonsterStateManager>().health = bossHealth[i];
+            soldiers.bossMonster[i].GetComponent<MonsterStateManager>().health = bossHealth[i];
         }
     }
 }

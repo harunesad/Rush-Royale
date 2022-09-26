@@ -15,6 +15,15 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
             soldiers[i].GetComponent<BulletSpawn>().enabled = true;
         }
     }
+    private void Start()
+    {
+        SpecialAttack.remove += Destroy;
+    }
+    void Destroy(int index)
+    {
+        Destroy(soldiers[index].gameObject);
+        soldiers.RemoveAt(index);
+    }
     public void Spawn()
     {
         if (spawnPoints.Count > 0 && CostManager.Instance.cost >= CostManager.Instance.costReduce && Time.timeScale == 1)

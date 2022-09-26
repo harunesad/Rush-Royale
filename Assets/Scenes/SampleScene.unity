@@ -153,13 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26733800fe8f17549b070fd58fd2e5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnMonsters:
-  - {fileID: 5019888017950112551, guid: 50aab07f1e61b184bb81013c7a729116, type: 3}
-  - {fileID: 5019888017950112551, guid: 035c90ee5b3c3a4489cc75a26d8ca433, type: 3}
-  - {fileID: 5019888017950112551, guid: fac8dedaca44b6d4aa818abe61e3afa1, type: 3}
   spawnPoint: {fileID: 93883430}
-  bossMonster:
-  - {fileID: 5019888017950112551, guid: 243f64d1db7bf5a4182ce1323e545488, type: 3}
+  soldiers: {fileID: 11400000, guid: 8184f8ca584ad4845a4d172215d2608e, type: 2}
 --- !u!4 &92223187
 Transform:
   m_ObjectHideFlags: 0
@@ -189,6 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterHealth: []
   bossHealth: []
+  soldiers: {fileID: 11400000, guid: 8184f8ca584ad4845a4d172215d2608e, type: 2}
 --- !u!1 &93883429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1012,7 @@ GameObject:
   - component: {fileID: 303332353}
   - component: {fileID: 303332352}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CostReduce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2309,6 +2305,9 @@ MonoBehaviour:
   costReduce: 10
   monsterCostInc: 
   bossCostInc: 
+  soldiers: {fileID: 11400000, guid: 8184f8ca584ad4845a4d172215d2608e, type: 2}
+  costText: {fileID: 545353806}
+  costReduceText: {fileID: 303332352}
 --- !u!4 &935203507
 Transform:
   m_ObjectHideFlags: 0
@@ -2588,18 +2587,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterCount: {fileID: 302340320}
-  costText: {fileID: 545353806}
   timeText: {fileID: 207156780}
   waveText: {fileID: 818957788}
-  costReduceText: {fileID: 303332352}
   lifeText: {fileID: 469991601}
-  upgradeText:
-  - {fileID: 471403547}
-  - {fileID: 1059409124}
-  - {fileID: 653911183}
-  - {fileID: 884878583}
   time: 20
-  wave: 0
 --- !u!1 &1022868644
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,6 +3058,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsters: []
   waveFinish: 0
+  waveText: {fileID: 818957788}
+  wave: 0
 --- !u!4 &1161054051
 Transform:
   m_ObjectHideFlags: 0
@@ -3224,8 +3217,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d108b40c7cb534cb6afc2d78426523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldiers: {fileID: 11400000, guid: 44863ee8405d320468117a98a05eb7c4, type: 2}
+  soldiers: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
   upgradeCost: 64000000640000006400000064000000
+  upgradeText:
+  - {fileID: 471403547}
+  - {fileID: 1059409124}
+  - {fileID: 653911183}
+  - {fileID: 884878583}
   divide: []
   minus: []
   plus: []
@@ -3581,7 +3579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432958881e58c7b4ebeac4cb6617bb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldiers: {fileID: 11400000, guid: 44863ee8405d320468117a98a05eb7c4, type: 2}
+  soldiers: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
   playerSoldiers: []
 --- !u!4 &1776393257
 Transform:

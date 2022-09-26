@@ -7,16 +7,16 @@ public class UIManager :  State
 {
     public static UIManager Instance;
     public TextMeshProUGUI monsterCount;
-    public TextMeshProUGUI costText;
+    //public TextMeshProUGUI costText;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI waveText;
-    public TextMeshProUGUI costReduceText;
+    //public TextMeshProUGUI costReduceText;
     public TextMeshProUGUI lifeText;
-    public List<TextMeshProUGUI> upgradeText;
+    //public List<TextMeshProUGUI> upgradeText;
 
     public float time = 40;
     float minute, second;
-    public int wave;
+    //public int wave;
     string count = "*";
     private void Awake()
     {
@@ -24,8 +24,13 @@ public class UIManager :  State
     }
     private void Start()
     {
-        waveText.text = "" + (wave + 1);
+        //waveText.text = "" + (wave + 1);
+        //SpawnMonsters.wave += WaveText;
     }
+    //void WaveText()
+    //{
+    //    waveText.text = "" + (wave + 1);
+    //}
     private void Update()
     {
         //TimeControl();

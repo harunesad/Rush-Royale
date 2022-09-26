@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MonsterDieState : MonsterBaseState
 {
+    public delegate void Wave();
+    public static event Wave wave;
     public override void EnterState(MonsterStateManager monster)
     {
         if (monster.destroy)
@@ -44,6 +46,7 @@ public class MonsterDieState : MonsterBaseState
             }
             SpawnSystem.Instance.ReAttack();
             CostManager.Instance.CostInc();
+            wave();
         }
         Object.Destroy(obj);
     }
