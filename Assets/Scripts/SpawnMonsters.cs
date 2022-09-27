@@ -9,6 +9,7 @@ public class SpawnMonsters : State, IState
     [SerializeField] Transform spawnPoint;
     //public List<GameObject> bossMonster;
     [SerializeField] MonsterSoldiers soldiers;
+    public List<GameObject> monsters;
     string methodNamee;
     float newTime;
     private void Awake()
@@ -59,8 +60,17 @@ public class SpawnMonsters : State, IState
     void Spawn(List <GameObject> objList, int index)
     {
         var monster = Instantiate(objList[index], spawnPoint.position, Quaternion.identity);
-        WaveControl.Instance.monsters.Add(monster);
+        monsters.Add(monster);
         UIManager.Instance.CountAdd();
+    }
+    public void MonstersDestroy()
+    {
+        for (int i = monsters.Count - 1; i > -1; i--)
+        {
+            UIManager.Instance.CountRemove();
+            Destroy(monsters[i]);
+        }
+        monsters.Clear();
     }
     public override void StateTrue()
     {

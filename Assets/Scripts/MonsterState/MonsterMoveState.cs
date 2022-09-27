@@ -6,10 +6,13 @@ using UnityEngine.AI;
 public class MonsterMoveState : MonsterBaseState
 {
     GameObject finish;
+    public delegate void Special(int choose);
+    public static event Special special;
     public override void EnterState(MonsterStateManager monster)
     {
         finish = GameObject.Find("FinishPoint");
-        SpecialAttack.instance.Special(monster.specialAttack);
+        //SpecialAttack.instance.Special(monster.specialAttack);
+        special(monster.specialAttack);
     }
     public override void UpdateState(MonsterStateManager monster)
     {

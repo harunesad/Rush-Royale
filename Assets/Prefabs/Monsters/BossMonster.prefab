@@ -267,7 +267,7 @@ MonoBehaviour:
   health: 100000
   armor: 10
   moveSpeed: 0.25
-  specialAttack: 3
+  specialAttack: 4
   costIncrease: 100
   destroy: 0
 --- !u!1 &6346232322068884566

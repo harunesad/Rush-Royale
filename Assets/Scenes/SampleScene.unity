@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 93883430}
   soldiers: {fileID: 11400000, guid: 8184f8ca584ad4845a4d172215d2608e, type: 2}
+  monsters: []
 --- !u!4 &92223187
 Transform:
   m_ObjectHideFlags: 0
@@ -3056,7 +3057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac26eb6dc108304086b156e0e969cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsters: []
   waveFinish: 0
   waveText: {fileID: 818957788}
   wave: 0
@@ -3579,7 +3579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432958881e58c7b4ebeac4cb6617bb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldiers: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
+  soldiers: []
+  spawnPoints: []
+  spawnObj: []
+  soldier: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
   playerSoldiers: []
 --- !u!4 &1776393257
 Transform:

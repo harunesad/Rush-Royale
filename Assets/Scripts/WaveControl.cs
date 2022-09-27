@@ -5,7 +5,6 @@ using TMPro;
 
 public class WaveControl : GenericSingleton<WaveControl>
 {
-    public List<GameObject> monsters;
     public bool waveFinish = false;
     public TextMeshProUGUI waveText;
     public int wave;
@@ -22,13 +21,8 @@ public class WaveControl : GenericSingleton<WaveControl>
     {
         if (UIManager.Instance.time <= 0 && !waveFinish)
         {
-            for (int i = monsters.Count - 1; i > -1; i--)
-            {
-                UIManager.Instance.CountRemove();
-                Destroy(monsters[i]);
-            }
+            SpawnMonsters.Instance.MonstersDestroy();
             waveFinish = true;
-            monsters.Clear();
             SpawnMonsters.Instance.SpawnRandomBoss();
             MonsterHealthManager.Instance.HealthIncrease();
             wave++;

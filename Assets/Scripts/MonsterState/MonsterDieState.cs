@@ -29,7 +29,7 @@ public class MonsterDieState : MonsterBaseState
     }
     void Die(GameObject obj)
     {
-        WaveControl.Instance.monsters.Remove(obj);
+        SpawnMonsters.Instance.monsters.Remove(obj);
         UIManager.Instance.CountRemove();
         if (WaveControl.Instance.waveFinish)
         {

@@ -34,8 +34,9 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
                 pos = spawnPoints[i].transform.position;
             }
 
-            int random = Random.Range(0, 4);
             CostManager.Instance.BuySoldier();
+
+            int random = Random.Range(0, 4);
             var soldier = Instantiate(spawnObj[random], pos + Vector3.up * 0.225f, Quaternion.identity);
             soldiers.Add(soldier);
         }
