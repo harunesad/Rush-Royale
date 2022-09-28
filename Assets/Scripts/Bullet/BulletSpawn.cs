@@ -18,8 +18,8 @@ public class BulletSpawn : State , IState
     {
         //if (compare.nearObj != null)
         //{
-        //    var obj = Instantiate(bullet, transform.position, Quaternion.identity);
-        //    obj.transform.parent = transform;
+        //var obj = Instantiate(bullet, transform.position, Quaternion.identity);
+        //obj.transform.parent = transform;
         //}
         Run(compare.nearObj != null);
     }

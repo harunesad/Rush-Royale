@@ -11,7 +11,7 @@ public class WaveControl : GenericSingleton<WaveControl>
     private void Start()
     {
         waveText.text = "" + (wave + 1);
-        MonsterDieState.wave += WaveText;
+        DieMonster.bossDie += WaveText;
     }
     void WaveText()
     {

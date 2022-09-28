@@ -18,6 +18,8 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
     private void Start()
     {
         SpecialAttack.remove += Destroy;
+        DieMonster.bossDie += SoldierRemoveToList;
+        DieMonster.bossDie += ReAttack;
     }
     void Destroy(int index)
     {
@@ -39,6 +41,17 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
             int random = Random.Range(0, 4);
             var soldier = Instantiate(spawnObj[random], pos + Vector3.up * 0.225f, Quaternion.identity);
             soldiers.Add(soldier);
+        }
+    }
+    public void SoldierRemoveToList()
+    {
+        for (int i = 0; i < soldiers.Count; i++)
+        {
+            if (soldiers[i] == null)
+            {
+                soldiers.RemoveAt(i);
+                i--;
+            }
         }
     }
 }

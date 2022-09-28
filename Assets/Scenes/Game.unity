@@ -3579,10 +3579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432958881e58c7b4ebeac4cb6617bb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldiers: []
-  spawnPoints: []
-  spawnObj: []
-  soldier: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
+  soldiers: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
   playerSoldiers: []
 --- !u!4 &1776393257
 Transform:

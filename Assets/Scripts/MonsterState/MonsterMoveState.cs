@@ -11,15 +11,14 @@ public class MonsterMoveState : MonsterBaseState
     public override void EnterState(MonsterStateManager monster)
     {
         finish = GameObject.Find("FinishPoint");
-        //SpecialAttack.instance.Special(monster.specialAttack);
-        special(monster.specialAttack);
+        SpecialAttack.instance.Special(monster.specialAttack);
     }
     public override void UpdateState(MonsterStateManager monster)
     {
         if (monster.health <= 0)
         {
-            monster.destroy = true;
-            monster.SwitchState(monster.DieState);
+            //monster.destroy = true;
+            monster.SwitchState(monster.DestroyState);
         }
         monster.transform.Translate(Vector3.forward * Time.deltaTime * monster.moveSpeed);
     }
@@ -33,7 +32,7 @@ public class MonsterMoveState : MonsterBaseState
         }
         if (otherObj.layer == 18)
         {
-            monster.destroy = false;
+            //monster.destroy = false;
             monster.SwitchState(monster.DieState);
         }
     }

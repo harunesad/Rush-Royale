@@ -15,6 +15,10 @@ public class SpecialAttack : MonoBehaviour
     {
         instance = this;
     }
+    private void Start()
+    {
+        DieMonster.bossDie += NewSoldierClear;
+    }
     public void Special(int special)
     {
         switch (special)
@@ -103,5 +107,9 @@ public class SpecialAttack : MonoBehaviour
                 }
             }
         }
+    }
+    void NewSoldierClear()
+    {
+        playerSoldiers.Clear();
     }
 }

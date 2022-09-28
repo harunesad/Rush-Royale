@@ -17,6 +17,7 @@ public class MonsterStateManager : MonoBehaviour
     MonsterBaseState currentState;
     public MonsterMoveState MoveState = new MonsterMoveState();
     public MonsterDieState DieState = new MonsterDieState();
+    public MonsterDestroyState DestroyState = new MonsterDestroyState();
     void Start()
     {
         currentState = MoveState;

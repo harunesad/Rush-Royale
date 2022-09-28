@@ -27,6 +27,7 @@ public class CostManager : GenericSingleton<CostManager>
             bossCostInc.Add(i);
             bossCostInc[i] = soldiers.bossMonster[i].GetComponent<MonsterStateManager>().costIncrease;
         }
+        DieMonster.bossDie += CostInc;
     }
     void Update()
     {

@@ -18,12 +18,20 @@ public class UIManager :  State
     {
         Instance = this;
     }
+    private void Start()
+    {
+        DieMonster.bossDie += ReTime;
+    }
     private void Update()
     {
         Run(time > 0);
         minute = Mathf.FloorToInt(time / 60);
         second = Mathf.FloorToInt(time % 60);
         timeText.text = minute + " : " + second;
+    }
+    void ReTime()
+    {
+        UIManager.Instance.time = 20;
     }
     public void CountAdd()
     {
