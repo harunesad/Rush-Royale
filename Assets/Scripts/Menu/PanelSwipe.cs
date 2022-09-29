@@ -15,7 +15,7 @@ public class PanelSwipe : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnDrag(PointerEventData eventData)
     {
         float difference = eventData.pressPosition.x - eventData.position.x;
-        if (transform.position.x < 270 && transform.position.x > 85)
+        if (transform.position.x < 275 && transform.position.x > 85)
         {
             transform.position = panelLocation - new Vector3(difference, 0, 0);
         }
@@ -24,7 +24,8 @@ public class PanelSwipe : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnEndDrag(PointerEventData eventData)
     {
         float percentage = (eventData.pressPosition.x - eventData.position.x) / Screen.width;
-        if(Mathf.Abs(percentage) >= threShold && transform.position.x > 85 && transform.position.x < 270)
+        Debug.Log(percentage);
+        if(Mathf.Abs(percentage) >= threShold && transform.position.x > 85 && transform.position.x < 275)
         {
             Vector3 newLocation = panelLocation;
             if(percentage > 0 && transform.position.x > -10)

@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SceneLoad : MonoBehaviour
+public class ButtonClick : MonoBehaviour
 {
     GameObject playButton;
+    //GameObject 
     private void Awake()
     {
         playButton = GameObject.Find("PlayButton");
