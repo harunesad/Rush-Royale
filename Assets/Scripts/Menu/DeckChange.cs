@@ -8,7 +8,7 @@ public class DeckChange : MonoBehaviour
 {
     public static DeckChange instance;
     public GameObject deck;
-    public List<Image> DeckList;
+    public List<GameObject> DeckList;
     private void Awake()
     {
         instance = this;
@@ -18,6 +18,8 @@ public class DeckChange : MonoBehaviour
         deck = Deck.gameObject;
         Sprite deckSprite = deck.GetComponent<Image>().sprite;
         Sprite selectSprite = ButtonClick.instance.newImage.GetComponent<Image>().sprite;
+        ButtonSelect.instance.useButton.SetActive(false);
+        ButtonSelect.instance.infoButton.SetActive(false);
         for (int i = 0; i < DeckList.Count; i++)
         {
             if (DeckList[i].GetComponent<Image>().sprite == ButtonClick.instance.newImage.GetComponent<Image>().sprite)
@@ -27,6 +29,7 @@ public class DeckChange : MonoBehaviour
         }
         if (deckSprite != selectSprite)
         {
+            deck.name = ButtonClick.instance.newImage.name;
             deck.GetComponent<Image>().sprite = selectSprite;
         }
     }

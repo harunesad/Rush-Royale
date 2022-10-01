@@ -114,12 +114,12 @@ GameObject:
   - component: {fileID: 8430480341813995789}
   - component: {fileID: 8430480341813995786}
   - component: {fileID: 4830915018658505852}
-  - component: {fileID: 8403034548149850639}
-  - component: {fileID: 3621171736277768581}
-  - component: {fileID: -3164561869280579250}
+  - component: {fileID: 4361008631695058022}
+  - component: {fileID: -7182063388517835803}
+  - component: {fileID: 662847523322719244}
   m_Layer: 8
-  m_Name: PlusFour
-  m_TagString: 4
+  m_Name: Plus2
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,7 +219,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8403034548149850639
+--- !u!114 &4361008631695058022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,10 +231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7445c59702ef03a45a74da48f0d7ee6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 500
+  attack: 300
   attackSpeed: 4
   bullet: {fileID: 4912979821746414824, guid: 93f7c86f8298bca46a88a453aa109bef, type: 3}
---- !u!114 &3621171736277768581
+--- !u!114 &-7182063388517835803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,7 +255,7 @@ MonoBehaviour:
   checkRadius: 10
   nearPos: {fileID: 0}
   nearObj: {fileID: 0}
---- !u!114 &-3164561869280579250
+--- !u!114 &662847523322719244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ++++
+  m_text: ++
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -377,8 +377,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 46
+  m_fontSizeBase: 46
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

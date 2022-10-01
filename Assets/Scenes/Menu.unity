@@ -4644,7 +4644,7 @@ GameObject:
   - component: {fileID: 563684476}
   - component: {fileID: 563684478}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Minus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5551,7 +5551,7 @@ GameObject:
   - component: {fileID: 680736387}
   - component: {fileID: 680736389}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Divide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5933,6 +5933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickButton: {fileID: 0}
   newImage: {fileID: 0}
+  so:
+    soldiersName: []
 --- !u!4 &764049677
 Transform:
   m_ObjectHideFlags: 0
@@ -6067,7 +6069,6 @@ GameObject:
   - component: {fileID: 781689792}
   - component: {fileID: 781689794}
   - component: {fileID: 781689793}
-  - component: {fileID: 781689795}
   - component: {fileID: 781689796}
   m_Layer: 5
   m_Name: Image (2)
@@ -6117,7 +6118,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6134,20 +6135,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781689791}
   m_CullTransparentMesh: 1
---- !u!114 &781689795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781689791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc4174e6cf62df4b97b32c0092005b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deck: {fileID: 0}
-  DeckList: []
 --- !u!114 &781689796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6901,7 +6888,7 @@ GameObject:
   - component: {fileID: 868293569}
   - component: {fileID: 868293571}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7806,7 +7793,6 @@ GameObject:
   - component: {fileID: 1085937030}
   - component: {fileID: 1085937032}
   - component: {fileID: 1085937031}
-  - component: {fileID: 1085937033}
   - component: {fileID: 1085937034}
   m_Layer: 5
   m_Name: Image (3)
@@ -7873,20 +7859,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085937029}
   m_CullTransparentMesh: 1
---- !u!114 &1085937033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085937029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc4174e6cf62df4b97b32c0092005b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deck: {fileID: 0}
-  DeckList: []
 --- !u!114 &1085937034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9140,7 +9112,7 @@ GameObject:
   - component: {fileID: 1168488863}
   - component: {fileID: 1168488865}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Plus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11454,7 +11426,6 @@ GameObject:
   - component: {fileID: 1639853002}
   - component: {fileID: 1639853004}
   - component: {fileID: 1639853003}
-  - component: {fileID: 1639853005}
   - component: {fileID: 1639853006}
   m_Layer: 5
   m_Name: Image
@@ -11521,20 +11492,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639853001}
   m_CullTransparentMesh: 1
---- !u!114 &1639853005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639853001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc4174e6cf62df4b97b32c0092005b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deck: {fileID: 0}
-  DeckList: []
 --- !u!114 &1639853006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13193,7 +13150,6 @@ GameObject:
   - component: {fileID: 1899286057}
   - component: {fileID: 1899286059}
   - component: {fileID: 1899286058}
-  - component: {fileID: 1899286060}
   - component: {fileID: 1899286061}
   m_Layer: 5
   m_Name: Image (1)
@@ -13260,20 +13216,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899286056}
   m_CullTransparentMesh: 1
---- !u!114 &1899286060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899286056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc4174e6cf62df4b97b32c0092005b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deck: {fileID: 0}
-  DeckList: []
 --- !u!114 &1899286061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13653,10 +13595,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck: {fileID: 0}
   DeckList:
-  - {fileID: 1639853003}
-  - {fileID: 1899286058}
-  - {fileID: 781689793}
-  - {fileID: 1085937031}
+  - {fileID: 1639853001}
+  - {fileID: 1899286056}
+  - {fileID: 781689791}
+  - {fileID: 1085937029}
 --- !u!4 &1983459023
 Transform:
   m_ObjectHideFlags: 0

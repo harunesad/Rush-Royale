@@ -114,12 +114,12 @@ GameObject:
   - component: {fileID: 8430480341813995789}
   - component: {fileID: 8430480341813995786}
   - component: {fileID: 4830915018658505852}
-  - component: {fileID: -9078977182024589581}
-  - component: {fileID: 6057022932207436199}
-  - component: {fileID: 677991621037480620}
-  m_Layer: 9
-  m_Name: MinusOne
-  m_TagString: 1
+  - component: {fileID: 2507093087017251503}
+  - component: {fileID: -6557271019834077030}
+  - component: {fileID: -1453805083430606129}
+  m_Layer: 10
+  m_Name: Divide2
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84fd47407344f214e84c35f762b12e75, type: 2}
+  - {fileID: 2100000, guid: 9629bbc95bf500d49b0a8a89ca640225, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -219,7 +219,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-9078977182024589581
+--- !u!114 &2507093087017251503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,10 +231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7445c59702ef03a45a74da48f0d7ee6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 200
+  attack: 300
   attackSpeed: 4
-  bullet: {fileID: 4912979821746414824, guid: ea22c9ed0d93bcd4384c91db6661a2bb, type: 3}
---- !u!114 &6057022932207436199
+  bullet: {fileID: 4912979821746414824, guid: 2389c3ac1ec279b46b0dde36dbbce47b, type: 3}
+--- !u!114 &-6557271019834077030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,11 +251,11 @@ MonoBehaviour:
     m_Bits: 8
   layerObj:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   checkRadius: 10
   nearPos: {fileID: 0}
   nearObj: {fileID: 0}
---- !u!114 &677991621037480620
+--- !u!114 &-1453805083430606129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '-'
+  m_text: //
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

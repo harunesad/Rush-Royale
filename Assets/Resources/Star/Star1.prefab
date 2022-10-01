@@ -114,12 +114,12 @@ GameObject:
   - component: {fileID: 8430480341813995789}
   - component: {fileID: 8430480341813995786}
   - component: {fileID: 4830915018658505852}
-  - component: {fileID: -7494664132036219214}
-  - component: {fileID: -1479465743536721428}
-  - component: {fileID: -2162628894340240946}
-  m_Layer: 10
-  m_Name: DivideThree
-  m_TagString: 3
+  - component: {fileID: -6909510007355954876}
+  - component: {fileID: -4096732321394508374}
+  - component: {fileID: 7254311860086647381}
+  m_Layer: 7
+  m_Name: Star1
+  m_TagString: 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9629bbc95bf500d49b0a8a89ca640225, type: 2}
+  - {fileID: 2100000, guid: 8a612ee5086b20b428b31569415f5665, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -219,7 +219,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-7494664132036219214
+--- !u!114 &-6909510007355954876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,10 +231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7445c59702ef03a45a74da48f0d7ee6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 400
+  attack: 200
   attackSpeed: 4
-  bullet: {fileID: 4912979821746414824, guid: 2389c3ac1ec279b46b0dde36dbbce47b, type: 3}
---- !u!114 &-1479465743536721428
+  bullet: {fileID: 4912979821746414824, guid: a5ce2ae7214d4b94784b0ae5ab2fe050, type: 3}
+--- !u!114 &-4096732321394508374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,11 +251,11 @@ MonoBehaviour:
     m_Bits: 8
   layerObj:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 128
   checkRadius: 10
   nearPos: {fileID: 0}
   nearObj: {fileID: 0}
---- !u!114 &-2162628894340240946
+--- !u!114 &7254311860086647381
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ///
+  m_text: '*'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -377,8 +377,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 76
-  m_fontSizeBase: 76
+  m_fontSize: 66
+  m_fontSizeBase: 66
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
