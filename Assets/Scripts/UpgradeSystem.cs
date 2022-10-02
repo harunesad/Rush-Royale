@@ -7,6 +7,7 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
 {
     [SerializeField] PlayerSoldiers soldiers;
     public List<int> upgradeCost;
+    public List<TextMeshProUGUI> upgradeCostText;
     public List<TextMeshProUGUI> upgradeText;
     public List<float> divide;
     public List<float> minus;
@@ -17,48 +18,48 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
         base.Awake();
         for (int i = 0; i < upgradeCost.Count; i++)
         {
-            upgradeText[i].text = "" + upgradeCost[i];
+            upgradeCostText[i].text = "" + upgradeCost[i];
         }
     }
     private void Start()
     {
-        StartValue(soldiers.divideObj, divide);
-        StartValue(soldiers.minusObj, minus);
-        StartValue(soldiers.plusObj, plus);
-        StartValue(soldiers.starObj, star);
+        StartValue(soldiers.firstObj, divide);
+        StartValue(soldiers.secondObj, minus);
+        StartValue(soldiers.thirdObj, plus);
+        StartValue(soldiers.fourthObj, star);
         SpecialAttack.removeUpgrade += RemoveUpgrade;
     }
     void RemoveUpgrade(int index)
     {
         upgradeCost[index] -= 100;
-        upgradeText[index].text = "" + upgradeCost[index];
+        upgradeCostText[index].text = "" + upgradeCost[index];
     }
     private void Update()
     {
         Application.quitting += LastValue;
     }
-    public void DivideUpgrade()
+    public void FirstUpgrade()
     {
-        Upgrade(soldiers.divideObj, 0, 10);
+        Upgrade(soldiers.firstObj, 0, soldiers.firstObj[0].layer);
     }
-    public void MinusUpgrade()
+    public void SecondUpgrade()
     {
-        Upgrade(soldiers.minusObj, 1, 9);
+        Upgrade(soldiers.secondObj, 1, soldiers.secondObj[0].layer);
     }
-    public void PlusUpgrade()
+    public void ThirdUpgrade()
     {
-        Upgrade(soldiers.plusObj, 2, 8);
+        Upgrade(soldiers.thirdObj, 2, soldiers.thirdObj[0].layer);
     }
-    public void StarUpgrade()
+    public void FourthUpgrade()
     {
-        Upgrade(soldiers.starObj, 3, 7);
+        Upgrade(soldiers.fourthObj, 3, soldiers.fourthObj[0].layer);
     }
     void LastValue()
     {
-        Value(soldiers.divideObj, divide);
-        Value(soldiers.minusObj, minus);
-        Value(soldiers.plusObj, plus);
-        Value(soldiers.starObj, star);
+        Value(soldiers.firstObj, divide);
+        Value(soldiers.secondObj, minus);
+        Value(soldiers.thirdObj, plus);
+        Value(soldiers.fourthObj, star);
     }
     void Value(List<GameObject> obj, List<float> objValue)
     {
@@ -93,7 +94,7 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
 
             CostManager.Instance.cost -= upgradeCost[index];
             upgradeCost[index] += 100;
-            upgradeText[index].text = "" + upgradeCost[index];
+            upgradeCostText[index].text = "" + upgradeCost[index];
         }
     }
 }

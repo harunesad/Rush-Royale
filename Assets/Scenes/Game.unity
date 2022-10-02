@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 251704672}
   - component: {fileID: 251704671}
   m_Layer: 5
-  m_Name: Divide
+  m_Name: First
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Divide
+  m_text: First
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 258049543}
   - component: {fileID: 258049542}
   m_Layer: 5
-  m_Name: StarUpgrade
+  m_Name: FourthUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -818,7 +818,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1349965380}
         m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
-        m_MethodName: StarUpgrade
+        m_MethodName: FourthUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1148,7 +1148,7 @@ GameObject:
   - component: {fileID: 306967186}
   - component: {fileID: 306967185}
   m_Layer: 5
-  m_Name: Minus
+  m_Name: Second
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Minus
+  m_text: Second
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1418,7 +1418,7 @@ GameObject:
   - component: {fileID: 471403548}
   - component: {fileID: 471403547}
   m_Layer: 5
-  m_Name: DivideCost
+  m_Name: FirstCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1786,7 +1786,7 @@ GameObject:
   - component: {fileID: 653911184}
   - component: {fileID: 653911183}
   m_Layer: 5
-  m_Name: PlusCount
+  m_Name: ThirdCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2150,7 +2150,7 @@ GameObject:
   - component: {fileID: 884878584}
   - component: {fileID: 884878583}
   m_Layer: 5
-  m_Name: StarCount
+  m_Name: FourthCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2421,7 +2421,7 @@ GameObject:
   - component: {fileID: 982738305}
   - component: {fileID: 982738304}
   m_Layer: 5
-  m_Name: DivideUpgrade
+  m_Name: FirstUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2495,7 +2495,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1349965380}
         m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
-        m_MethodName: DivideUpgrade
+        m_MethodName: FirstUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2605,7 +2605,7 @@ GameObject:
   - component: {fileID: 1022868647}
   - component: {fileID: 1022868646}
   m_Layer: 5
-  m_Name: MinusUpgrade
+  m_Name: SecondUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2679,7 +2679,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1349965380}
         m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
-        m_MethodName: MinusUpgrade
+        m_MethodName: SecondUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2739,7 +2739,7 @@ GameObject:
   - component: {fileID: 1059409125}
   - component: {fileID: 1059409124}
   m_Layer: 5
-  m_Name: MinusCount
+  m_Name: SecondCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2874,7 +2874,7 @@ GameObject:
   - component: {fileID: 1106788918}
   - component: {fileID: 1106788917}
   m_Layer: 5
-  m_Name: Plus
+  m_Name: Third
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2920,7 +2920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Plus
+  m_text: Third
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3235,11 +3235,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soldiers: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
   upgradeCost: 64000000640000006400000064000000
-  upgradeText:
+  upgradeCostText:
   - {fileID: 471403547}
   - {fileID: 1059409124}
   - {fileID: 653911183}
   - {fileID: 884878583}
+  upgradeText:
+  - {fileID: 251704671}
+  - {fileID: 306967185}
+  - {fileID: 1106788917}
+  - {fileID: 2114084702}
   divide: []
   minus: []
   plus: []
@@ -3692,7 +3697,7 @@ GameObject:
   - component: {fileID: 2050559703}
   - component: {fileID: 2050559702}
   m_Layer: 5
-  m_Name: PlusUpgrade
+  m_Name: ThirdUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3766,7 +3771,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1349965380}
         m_TargetAssemblyTypeName: UpgradeSystem, Assembly-CSharp
-        m_MethodName: PlusUpgrade
+        m_MethodName: ThirdUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3826,7 +3831,7 @@ GameObject:
   - component: {fileID: 2114084703}
   - component: {fileID: 2114084702}
   m_Layer: 5
-  m_Name: Star
+  m_Name: Fourth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3872,7 +3877,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Star
+  m_text: Fourth
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

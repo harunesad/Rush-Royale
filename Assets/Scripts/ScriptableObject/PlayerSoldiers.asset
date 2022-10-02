@@ -12,23 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09dbb21a8a18d5542824b8c5b10e89dd, type: 3}
   m_Name: PlayerSoldiers
   m_EditorClassIdentifier: 
-  starObj:
-  - {fileID: 8430480341813995787, guid: 57f626b65f7c8ae4ebb0c5da4eb8ab78, type: 3}
-  - {fileID: 4069298050355158130, guid: f75c7b3bb35720f4789e639fd503abc9, type: 3}
-  - {fileID: 4069298050355158130, guid: 13c4fb507a5d4a548978a2fc320ce177, type: 3}
-  - {fileID: 4069298050355158130, guid: a96dddd2c5ff88149b8eb637850fa811, type: 3}
-  plusObj:
+  firstObj:
   - {fileID: 8430480341813995787, guid: ba50565fde696924cb402f504b72b5c5, type: 3}
   - {fileID: 8430480341813995787, guid: b5a78d726d120a0489dbefdf450dc528, type: 3}
   - {fileID: 8430480341813995787, guid: ef789e7e58f56ca48a5b600a81aadaa7, type: 3}
   - {fileID: 8430480341813995787, guid: 4e8dadd584e07644093010d110bab346, type: 3}
-  minusObj:
-  - {fileID: 8430480341813995787, guid: 964bd497b2c216d418a2c02591d9f529, type: 3}
-  - {fileID: 8430480341813995787, guid: a6676415347e6a444aa4fbd4422b42d5, type: 3}
-  - {fileID: 8430480341813995787, guid: dc777b1701649d54a815bb673c686654, type: 3}
-  - {fileID: 8430480341813995787, guid: 7065ec63296c8bd4698c5d6b7a126416, type: 3}
-  divideObj:
+  secondObj:
   - {fileID: 8430480341813995787, guid: 2e512548e9c3ca9438027168eee91264, type: 3}
   - {fileID: 8430480341813995787, guid: e2217536faf551f4d9054937d389d48d, type: 3}
   - {fileID: 8430480341813995787, guid: 79968129f914d0a4e90c6042e0811dad, type: 3}
   - {fileID: 8430480341813995787, guid: a9775746cb3aaf0488eadc89dadbe874, type: 3}
+  thirdObj:
+  - {fileID: 8430480341813995787, guid: 57f626b65f7c8ae4ebb0c5da4eb8ab78, type: 3}
+  - {fileID: 4069298050355158130, guid: f75c7b3bb35720f4789e639fd503abc9, type: 3}
+  - {fileID: 4069298050355158130, guid: 13c4fb507a5d4a548978a2fc320ce177, type: 3}
+  - {fileID: 4069298050355158130, guid: a96dddd2c5ff88149b8eb637850fa811, type: 3}
+  fourthObj:
+  - {fileID: 8430480341813995787, guid: 964bd497b2c216d418a2c02591d9f529, type: 3}
+  - {fileID: 8430480341813995787, guid: a6676415347e6a444aa4fbd4422b42d5, type: 3}
+  - {fileID: 8430480341813995787, guid: dc777b1701649d54a815bb673c686654, type: 3}
+  - {fileID: 8430480341813995787, guid: 7065ec63296c8bd4698c5d6b7a126416, type: 3}

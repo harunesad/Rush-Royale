@@ -25,15 +25,24 @@ public class ButtonClick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Application.quitting += SaveDeck;
     }
     void PlayButton()
+    {
+        SaveDeck();
+        SceneManager.LoadScene(1);
+    }
+    public void UseButton(Button clickButton)
+    {
+        var parent = clickButton.transform.parent;
+        newImage = parent.gameObject;
+    }
+    void SaveDeck()
     {
         if (so.soldiersName.Count > 0)
         {
             so.soldiersName.Clear();
         }
-        //Debug.Log(DeckChange.instance.DeckList[0].GetComponent<Image>().sprite);
         for (int i = 0; i < DeckChange.instance.DeckList.Count; i++)
         {
             if (DeckChange.instance.DeckList[i].GetComponent<Image>().sprite == null)
@@ -41,14 +50,7 @@ public class ButtonClick : MonoBehaviour
                 return;
             }
             so.soldiersName.Add(DeckChange.instance.DeckList[i].name);
-            //so.soldiersName[i] = DeckChange.instance.DeckList[i].name;
         }
         SaveManager.Save(so);
-        SceneManager.LoadScene(1);
-    }
-    public void UseButton(Button clickButton)
-    {
-        var parent = clickButton.transform.parent;
-        newImage = parent.gameObject;
     }
 }

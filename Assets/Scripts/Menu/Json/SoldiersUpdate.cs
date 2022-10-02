@@ -10,20 +10,19 @@ public class SoldiersUpdate : MonoBehaviour
     void Start()
     {
         so = SaveManager.Load();
-        ListUpdate(soldiers.starObj, 0);
-        ListUpdate(soldiers.plusObj, 1);
-        ListUpdate(soldiers.minusObj, 2);
-        ListUpdate(soldiers.divideObj, 3);
-        for (int i = 0; i < 4; i++)
-        {
-            Debug.Log(so.soldiersName[i]);
-        }
+        ListUpdate(soldiers.firstObj, 0);
+        ListUpdate(soldiers.secondObj, 1);
+        ListUpdate(soldiers.thirdObj, 2);
+        ListUpdate(soldiers.fourthObj, 3);
+
+        TextUpdate();
+        FirstSpawnUpdate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void ListUpdate(List<GameObject> soldier, int element)
     {
@@ -34,5 +33,19 @@ public class SoldiersUpdate : MonoBehaviour
             variableForPrefab = Resources.Load(path) as GameObject;
             soldier[i] = variableForPrefab;
         }
+    }
+    void TextUpdate()
+    {
+        for (int i = 0; i < so.soldiersName.Count; i++)
+        {
+            UpgradeSystem.Instance.upgradeText[i].text = so.soldiersName[i];
+        }
+    }
+    void FirstSpawnUpdate()
+    {
+        SpawnSystem.Instance.spawnObj[0] = soldiers.firstObj[0];
+        SpawnSystem.Instance.spawnObj[1] = soldiers.secondObj[0];
+        SpawnSystem.Instance.spawnObj[2] = soldiers.thirdObj[0];
+        SpawnSystem.Instance.spawnObj[3] = soldiers.fourthObj[0];
     }
 }

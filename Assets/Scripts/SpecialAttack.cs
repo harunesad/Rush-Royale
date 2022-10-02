@@ -42,16 +42,16 @@ public class SpecialAttack : MonoBehaviour
                 playerSoldiers.RemoveAt(sol);
                 break;
             case 3:
-                UpgradeRemove(soldiers.divideObj, 0, 10);
-                UpgradeRemove(soldiers.minusObj, 1, 9);
-                UpgradeRemove(soldiers.plusObj, 2, 8);
-                UpgradeRemove(soldiers.starObj, 3, 7);
+                UpgradeRemove(soldiers.firstObj, 0, soldiers.firstObj[0].layer);
+                UpgradeRemove(soldiers.secondObj, 1, soldiers.secondObj[0].layer);
+                UpgradeRemove(soldiers.thirdObj, 2, soldiers.thirdObj[0].layer);
+                UpgradeRemove(soldiers.fourthObj, 3, soldiers.fourthObj[0].layer);
                 break;
             case 4:
-                RemoveLevel(soldiers.divideObj);
-                RemoveLevel(soldiers.minusObj);
-                RemoveLevel(soldiers.plusObj);
-                RemoveLevel(soldiers.starObj);
+                RemoveLevel(soldiers.firstObj);
+                RemoveLevel(soldiers.secondObj);
+                RemoveLevel(soldiers.thirdObj);
+                RemoveLevel(soldiers.fourthObj);
                 break;
             default:
                 break;

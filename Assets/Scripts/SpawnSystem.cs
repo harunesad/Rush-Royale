@@ -6,7 +6,7 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
 {
     public List<GameObject> soldiers;
     public List<GameObject> spawnPoints;
-    [SerializeField] List<GameObject> spawnObj;
+    public List<GameObject> spawnObj;
     Vector3 pos;
     public void ReAttack()
     {
