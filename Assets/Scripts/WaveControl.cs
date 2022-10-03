@@ -8,6 +8,8 @@ public class WaveControl : GenericSingleton<WaveControl>
     public bool waveFinish = false;
     public TextMeshProUGUI waveText;
     public int wave;
+    int coin;
+    int load;
     private void Start()
     {
         waveText.text = "" + (wave + 1);
@@ -26,6 +28,11 @@ public class WaveControl : GenericSingleton<WaveControl>
             SpawnMonsters.Instance.SpawnRandomBoss();
             MonsterHealthManager.Instance.HealthIncrease();
             wave++;
+            coin = wave * 100;
+            load = PlayerPrefs.GetInt("Coin");
+            load += coin;
+            PlayerPrefs.SetInt("Coin", load);
+            Debug.Log(PlayerPrefs.GetInt("Coin"));
         }
         if (UIManager.Instance.time > 0)
         {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DeckUpdate : MonoBehaviour
 {
-    SaveObject so;
+    public SaveObject so;
     [SerializeField] List<GameObject> newDeck;
     void Start()
     {
