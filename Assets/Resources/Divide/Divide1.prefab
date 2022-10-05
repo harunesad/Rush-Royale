@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 8457254635447356462}
   - component: {fileID: 5337355859938258417}
   - component: {fileID: -8060741614571873302}
+  - component: {fileID: -5910455251148052773}
   m_Layer: 10
   m_Name: Divide1
   m_TagString: 1
@@ -284,6 +285,20 @@ MonoBehaviour:
     m_Bits: 32768
   soldiers: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
   others: []
+--- !u!114 &-5910455251148052773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430480341813995787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bb0763c7dbc6740a77bff8f45c57d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCountCard: 0
+  upgradeCountCard: 20
 --- !u!1 &8671478722121472596
 GameObject:
   m_ObjectHideFlags: 0

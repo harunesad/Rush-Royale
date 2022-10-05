@@ -7,6 +7,8 @@ public class ButtonSelect : MonoBehaviour
     public static ButtonSelect instance;
     public GameObject useButton;
     public GameObject infoButton;
+    public GameObject progressBar;
+    public GameObject progressText;
     private void Awake()
     {
         instance = this;

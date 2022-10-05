@@ -15,22 +15,33 @@ public class DeckChange : MonoBehaviour
     }
     public void DeckSelect(Image Deck)
     {
-        deck = Deck.gameObject;
-        Sprite deckSprite = deck.GetComponent<Image>().sprite;
-        Sprite selectSprite = ButtonClick.instance.newImage.GetComponent<Image>().sprite;
-        ButtonSelect.instance.useButton.SetActive(false);
-        ButtonSelect.instance.infoButton.SetActive(false);
-        for (int i = 0; i < DeckList.Count; i++)
+        if (ButtonClick.instance.newImage != null)
         {
-            if (DeckList[i].GetComponent<Image>().sprite == ButtonClick.instance.newImage.GetComponent<Image>().sprite)
+            deck = Deck.gameObject;
+            Sprite deckSprite = deck.GetComponent<Image>().sprite;
+            Sprite selectSprite = ButtonClick.instance.newImage.GetComponent<Image>().sprite;
+            ButtonSelect.instance.useButton.SetActive(false);
+            ButtonSelect.instance.infoButton.SetActive(false);
+            for (int i = 0; i < DeckList.Count; i++)
             {
-                return;
+                if (DeckList[i].GetComponent<Image>().sprite == ButtonClick.instance.newImage.GetComponent<Image>().sprite)
+                {
+                    return;
+                }
+            }
+            if (deckSprite != selectSprite)
+            {
+                deck.name = ButtonClick.instance.newImage.name;
+                deck.GetComponent<Image>().sprite = selectSprite;
             }
         }
-        if (deckSprite != selectSprite)
+        else
         {
-            deck.name = ButtonClick.instance.newImage.name;
-            deck.GetComponent<Image>().sprite = selectSprite;
+            GameObject parent = ButtonSelect.instance.useButton.transform.parent.gameObject;
+            parent.transform.GetChild(2).gameObject.SetActive(true);
+            parent.transform.GetChild(3).gameObject.SetActive(true);
+            ButtonSelect.instance.useButton.SetActive(false);
+            ButtonSelect.instance.infoButton.SetActive(false);
         }
     }
     void Start()

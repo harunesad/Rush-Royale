@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: -6909510007355954876}
   - component: {fileID: -4096732321394508374}
   - component: {fileID: 7254311860086647381}
+  - component: {fileID: 7597629717908245327}
   m_Layer: 7
   m_Name: Star1
   m_TagString: 1
@@ -284,6 +285,20 @@ MonoBehaviour:
     m_Bits: 32768
   soldiers: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
   others: []
+--- !u!114 &7597629717908245327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430480341813995787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bb0763c7dbc6740a77bff8f45c57d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCountCard: 0
+  upgradeCountCard: 3
 --- !u!1 &8671478722121472596
 GameObject:
   m_ObjectHideFlags: 0

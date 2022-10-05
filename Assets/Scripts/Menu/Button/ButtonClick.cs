@@ -8,7 +8,6 @@ using TMPro;
 public class ButtonClick : MonoBehaviour
 {
     public static ButtonClick instance;
-    //public Button clickButton;
     public GameObject newImage;
     GameObject playButton;
     public SaveObject so;
@@ -16,8 +15,11 @@ public class ButtonClick : MonoBehaviour
     [SerializeField] TextMeshProUGUI attackText;
     [SerializeField] TextMeshProUGUI attackSpeedText;
     [SerializeField] Image sprite;
+    public GameObject panelHolder;
+    GameObject parentObj;
     private void Awake()
     {
+        panelHolder = GameObject.Find("PanelHolder");
         instance = this;
         playButton = GameObject.Find("PlayButton");
         playButton.GetComponent<Button>().onClick.AddListener(PlayButton);
@@ -30,7 +32,7 @@ public class ButtonClick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Application.quitting += SaveDeck;
+        //Application.quitting += SaveDeck;
     }
     void PlayButton()
     {
@@ -44,13 +46,14 @@ public class ButtonClick : MonoBehaviour
     }
     public void InfoButton(Button clickButton)
     {
+        panelHolder.GetComponent<PanelSwipe>().enabled = false;
         ýnfoPanel.SetActive(true);
 
         var obj = clickButton.transform.parent;
-        GameObject parent = obj.gameObject;
+        parentObj = obj.gameObject;
 
-        string soldierName = parent.name + 1;
-        string path = parent.name + "/" + soldierName;
+        string soldierName = parentObj.name + 1;
+        string path = parentObj.name + "/" + soldierName;
         Debug.Log(path);
 
         GameObject variableForPrefab = Resources.Load(path) as GameObject;
@@ -59,11 +62,16 @@ public class ButtonClick : MonoBehaviour
         attackText.text = "" + bulletSpawn.attack;
         attackSpeedText.text = "" + bulletSpawn.attackSpeed;
 
-        sprite.GetComponent<Image>().sprite = parent.GetComponent<Image>().sprite;
+        sprite.GetComponent<Image>().sprite = parentObj.GetComponent<Image>().sprite;
     }
     public void PanelClose()
     {
+        panelHolder.GetComponent<PanelSwipe>().enabled = true;
         ýnfoPanel.SetActive(false);
+        parentObj.transform.GetChild(0).gameObject.SetActive(false);
+        parentObj.transform.GetChild(1).gameObject.SetActive(false);
+        parentObj.transform.GetChild(parentObj.transform.childCount - 1).gameObject.SetActive(true);
+        parentObj.transform.GetChild(parentObj.transform.childCount - 2).gameObject.SetActive(true);
     }
     void SaveDeck()
     {
