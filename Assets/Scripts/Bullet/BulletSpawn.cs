@@ -6,13 +6,14 @@ public class BulletSpawn : State , IState
 {
     public float attack;
     public float attackSpeed;
+    public float spawnSpeed;
 
     [SerializeField] GameObject bullet;
     Compare compare;
     private void Start()
     {
-        compare = GameObject.Find("FinishPoint").GetComponent<Compare>();
-        InvokeRepeating("SpawnBullet", 1, 0.25f);
+        compare = GameObject.Find("Compare").GetComponent<Compare>();
+        InvokeRepeating("SpawnBullet", 1, spawnSpeed);
     }
     public void SpawnBullet()
     {
@@ -21,7 +22,7 @@ public class BulletSpawn : State , IState
         //var obj = Instantiate(bullet, transform.position, Quaternion.identity);
         //obj.transform.parent = transform;
         //}
-        Run(compare.nearObj != null);
+        Run(compare.nearMonster != null);
     }
 
     public override void StateTrue()

@@ -8,8 +8,11 @@ public class ChestProgress : MonoBehaviour
     public Image chestProgressBar;
     void Start()
     {
-        int newBar = 10000 / PlayerPrefs.GetInt("Coin");
-        chestProgressBar.fillAmount = 1 / (float)newBar;
+        if (PlayerPrefs.GetInt("Progress") != 0)
+        {
+            int newBar = 10000 / PlayerPrefs.GetInt("Progress");
+            chestProgressBar.fillAmount = 1 / (float)newBar;
+        }
     }
     void Update()
     {

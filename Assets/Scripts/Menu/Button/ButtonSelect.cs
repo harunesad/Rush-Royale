@@ -9,6 +9,7 @@ public class ButtonSelect : MonoBehaviour
     public GameObject infoButton;
     public GameObject progressBar;
     public GameObject progressText;
+    public GameObject upgradeButton;
     private void Awake()
     {
         instance = this;

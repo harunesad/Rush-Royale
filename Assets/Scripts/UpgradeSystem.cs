@@ -16,6 +16,10 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
     public override void Awake()
     {
         base.Awake();
+        PropertyUpdate(soldiers.firstObj);
+        PropertyUpdate(soldiers.secondObj);
+        PropertyUpdate(soldiers.thirdObj);
+        PropertyUpdate(soldiers.fourthObj);
         for (int i = 0; i < upgradeCost.Count; i++)
         {
             upgradeCostText[i].text = "" + upgradeCost[i];
@@ -28,6 +32,15 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
         StartValue(soldiers.thirdObj, plus);
         StartValue(soldiers.fourthObj, star);
         SpecialAttack.removeUpgrade += RemoveUpgrade;
+    }
+    void PropertyUpdate(List<GameObject> obj)
+    {
+        for (int i = 0; i < obj.Count - 1; i++)
+        {
+            obj[i + 1].GetComponent<BulletSpawn>().spawnSpeed = obj[i].GetComponent<BulletSpawn>().spawnSpeed * obj[0].GetComponent<UpgradeProgress>().levelMultiplier[3];
+            obj[i + 1].GetComponent<BulletSpawn>().attack = obj[i].GetComponent<BulletSpawn>().attack * obj[0].GetComponent<UpgradeProgress>().levelMultiplier[2];
+            obj[i + 1].GetComponent<BulletSpawn>().attackSpeed = obj[i].GetComponent<BulletSpawn>().attackSpeed * obj[0].GetComponent<UpgradeProgress>().levelMultiplier[1];
+        }
     }
     void RemoveUpgrade(int index)
     {
@@ -84,7 +97,8 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
             {
                 if (SpawnSystem.Instance.soldiers[i].layer == layer)
                 {
-                    SpawnSystem.Instance.soldiers[i].GetComponent<BulletSpawn>().attack *= 2;
+                    UpgradeProgress progress = SpawnSystem.Instance.soldiers[0].GetComponent<UpgradeProgress>();
+                    SpawnSystem.Instance.soldiers[i].GetComponent<BulletSpawn>().attack *= progress.levelMultiplier[0];
                 }
             }
             for (int i = 0; i < objects.Count; i++)

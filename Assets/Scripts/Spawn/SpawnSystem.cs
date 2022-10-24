@@ -18,7 +18,7 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
     private void Start()
     {
         SpecialAttack.remove += Destroy;
-        DieMonster.bossDie += SoldierRemoveToList;
+        //DieMonster.bossDie += SoldierRemoveToList;
         DieMonster.bossDie += ReAttack;
     }
     void Destroy(int index)
@@ -51,7 +51,9 @@ public class SpawnSystem : GenericSingleton<SpawnSystem>
             {
                 soldiers.RemoveAt(i);
                 i--;
+                Debug.Log("sadsda");
             }
+            Debug.Log("aaaaaaa");
         }
     }
 }

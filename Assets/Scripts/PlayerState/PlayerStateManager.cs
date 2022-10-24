@@ -6,6 +6,7 @@ public class PlayerStateManager : MonoBehaviour
 {
     public float posX, posZ;
     public int myLayer;
+    public LayerMask firstLayer;
     public GameObject objMove;
     public GameObject crashObj;
     public GameObject nearObj;
@@ -15,7 +16,6 @@ public class PlayerStateManager : MonoBehaviour
     public LayerMask layerMask;
     public LayerMask layerMaskBase;
     public PlayerSoldiers soldiers;
-    public List<GameObject> others;
 
     PlayerBaseState currentState;
     public PlayerDownState DownState = new PlayerDownState();

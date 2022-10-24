@@ -80,7 +80,7 @@ public class SpecialAttack : MonoBehaviour
     }
     void RemoveLevel(List<GameObject> obj)
     {
-        for (int i = 0; i < SpawnSystem.Instance.soldiers.Count; i+=2)
+        for (int i = 1; i < SpawnSystem.Instance.soldiers.Count; i+=2)
         {
             for (int j = 0; j < obj.Count; j++)
             {
@@ -103,10 +103,13 @@ public class SpecialAttack : MonoBehaviour
                         GameObject ground = SpawnSystem.Instance.soldiers[i].GetComponent<PlayerStateManager>().groundObj;
                         ground.GetComponent<Trigger>().isEmpty = true;
                         ground.layer = 3;
+                        SpawnSystem.Instance.soldiers.RemoveAt(i);
+                        i--;
                     }
                 }
             }
         }
+        //SpawnSystem.Instance.SoldierRemoveToList();
     }
     void NewSoldierClear()
     {

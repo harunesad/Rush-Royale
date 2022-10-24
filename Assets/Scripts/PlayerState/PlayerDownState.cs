@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerDownState : PlayerBaseState
 {
-    bool result;
-
     public override void EnterState(PlayerStateManager player)
     {
 

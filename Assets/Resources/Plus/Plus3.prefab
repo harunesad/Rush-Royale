@@ -115,7 +115,6 @@ GameObject:
   - component: {fileID: 8430480341813995786}
   - component: {fileID: 4830915018658505852}
   - component: {fileID: 2516527331358684721}
-  - component: {fileID: 7597726631816786591}
   - component: {fileID: -1521525383127891789}
   m_Layer: 8
   m_Name: Plus3
@@ -231,30 +230,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7445c59702ef03a45a74da48f0d7ee6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 400
-  attackSpeed: 4
+  attack: 800
+  attackSpeed: 4.84
+  spawnSpeed: 1
   bullet: {fileID: 4912979821746414824, guid: 93f7c86f8298bca46a88a453aa109bef, type: 3}
---- !u!114 &7597726631816786591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8430480341813995787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0a99215fba0be468c99a46de40c40c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerPos:
-    serializedVersion: 2
-    m_Bits: 8
-  layerObj:
-    serializedVersion: 2
-    m_Bits: 256
-  checkRadius: 10
-  nearPos: {fileID: 0}
-  nearObj: {fileID: 0}
 --- !u!114 &-1521525383127891789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +249,9 @@ MonoBehaviour:
   posX: 0
   posZ: 0
   myLayer: 0
+  firstLayer:
+    serializedVersion: 2
+    m_Bits: 256
   objMove: {fileID: 8430480341813995787}
   crashObj: {fileID: 0}
   nearObj: {fileID: 0}
@@ -283,7 +265,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32768
   soldiers: {fileID: 11400000, guid: 8c9961f0e1d269d4fb1feb9cd14b78f8, type: 2}
-  others: []
 --- !u!1 &8671478722121472596
 GameObject:
   m_ObjectHideFlags: 0

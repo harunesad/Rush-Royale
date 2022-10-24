@@ -20,8 +20,8 @@ public class DeckChange : MonoBehaviour
             deck = Deck.gameObject;
             Sprite deckSprite = deck.GetComponent<Image>().sprite;
             Sprite selectSprite = ButtonClick.instance.newImage.GetComponent<Image>().sprite;
-            ButtonSelect.instance.useButton.SetActive(false);
-            ButtonSelect.instance.infoButton.SetActive(false);
+            ButtonSetActive.instance.ButtonState();
+            ButtonSetActive.instance.ProgressState();
             for (int i = 0; i < DeckList.Count; i++)
             {
                 if (DeckList[i].GetComponent<Image>().sprite == ButtonClick.instance.newImage.GetComponent<Image>().sprite)
@@ -33,6 +33,7 @@ public class DeckChange : MonoBehaviour
             {
                 deck.name = ButtonClick.instance.newImage.name;
                 deck.GetComponent<Image>().sprite = selectSprite;
+                ButtonClick.instance.SaveDeck();
             }
         }
         else
@@ -40,8 +41,7 @@ public class DeckChange : MonoBehaviour
             GameObject parent = ButtonSelect.instance.useButton.transform.parent.gameObject;
             parent.transform.GetChild(2).gameObject.SetActive(true);
             parent.transform.GetChild(3).gameObject.SetActive(true);
-            ButtonSelect.instance.useButton.SetActive(false);
-            ButtonSelect.instance.infoButton.SetActive(false);
+            ButtonSetActive.instance.ButtonState();
         }
     }
     void Start()

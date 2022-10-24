@@ -10,7 +10,7 @@ public class BulletControl : State, IState
     Compare compare;
     private void Awake()
     {
-        compare = GameObject.Find("FinishPoint").GetComponent<Compare>();
+        compare = GameObject.Find("Compare").GetComponent<Compare>();
     }
     void Start()
     {
@@ -18,7 +18,7 @@ public class BulletControl : State, IState
         attackSpeed = transform.parent.GetComponent<BulletSpawn>().attackSpeed;
         transform.parent = null;
 
-        target = compare.nearObj.gameObject;
+        target = compare.nearMonster.gameObject;
     }
     void Update()
     {

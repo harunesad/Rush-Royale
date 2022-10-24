@@ -10,6 +10,7 @@ public class UIManager :  State
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI lifeText;
+    public GameObject gameOverPanel;
 
     public float time = 40;
     float minute, second;
@@ -31,7 +32,7 @@ public class UIManager :  State
     }
     void ReTime()
     {
-        UIManager.Instance.time = 20;
+        time = 20;
     }
     public void CountAdd()
     {
@@ -42,7 +43,20 @@ public class UIManager :  State
         string currentLife = lifeText.text;
         currentLife = currentLife.Substring(0, currentLife.Length - 1);
         lifeText.text = currentLife;
-        _ = currentLife.Length == 0 ? Time.timeScale = 0 : Time.timeScale = 1;
+        if (currentLife.Length == 0)
+        {
+            Time.timeScale = 0;
+            gameOverPanel.SetActive(true);
+            TextMeshProUGUI coinText = gameOverPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI coinIncText = gameOverPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI crystalText = gameOverPanel.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI crystalIncText = gameOverPanel.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+            coinText.text = "" + PlayerPrefs.GetInt("Coin");
+            coinIncText.text = "" + WaveControl.Instance.coin;
+            crystalText.text = "" + PlayerPrefs.GetInt("Crystal");
+            crystalIncText.text = "" + WaveControl.Instance.crystal;
+        }
+        //_ = currentLife.Length == 0 ? Time.timeScale = 0 : Time.timeScale = 1;
     }
     public void CountRemove()
     {

@@ -56,6 +56,7 @@ public class CostManager : GenericSingleton<CostManager>
         {
             soldiers.bossMonster[i].GetComponent<MonsterStateManager>().costIncrease *= 2;
         }
+        Debug.Log("sadassad");
     }
     void ValueChanges()
     {

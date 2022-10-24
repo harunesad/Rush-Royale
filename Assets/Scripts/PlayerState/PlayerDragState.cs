@@ -11,9 +11,11 @@ public class PlayerDragState : PlayerBaseState
     Transform nearPos;
     public override void EnterState(PlayerStateManager player)
     {
-        compare = player.GetComponent<Compare>();
+        compare = GameObject.Find("Compare").GetComponent<Compare>();
         posX = player.posX;
         posZ = player.posZ;
+        compare.soldier = player.transform;
+        compare.layerObject.value = player.firstLayer;
     }
     public override void UpdateState(PlayerStateManager player)
     {
@@ -48,7 +50,12 @@ public class PlayerDragState : PlayerBaseState
 
     public override void OnMouseDrag(PlayerStateManager player)
     {
-        player.nearObj = compare.nearObj.gameObject;
+        compare.CompareGround();
+        compare.CompareObject();
+        if (compare.nearObject != null)
+        {
+            player.nearObj = compare.nearObject.gameObject;
+        }
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -60,7 +67,7 @@ public class PlayerDragState : PlayerBaseState
         }
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, player.layerMask))
         {
-            nearPos = compare.nearPos;
+            nearPos = compare.nearGround;
             player.objMove.transform.position = new Vector3(hit.point.x, posY, hit.point.z);
             if (nearPos.GetComponent<Trigger>().isEmpty)
             {
