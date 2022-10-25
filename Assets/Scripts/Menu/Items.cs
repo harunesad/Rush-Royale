@@ -9,6 +9,8 @@ public class Items : MonoBehaviour
     public TextMeshProUGUI crystalText;
     public TextMeshProUGUI coinAddText;
     public TextMeshProUGUI crystalAddText;
+    public TextMeshProUGUI storeCoinAddText;
+    public TextMeshProUGUI storeCrystalAddText;
     public int chestNumber;
     private void Awake()
     {
@@ -36,6 +38,24 @@ public class Items : MonoBehaviour
     {
         int randomCrystal = Random.Range(min, max);
         crystalAddText.text = "" + randomCrystal;
+        int crystal = PlayerPrefs.GetInt("Crystal");
+        crystal += randomCrystal;
+        PlayerPrefs.SetInt("Crystal", crystal);
+        crystalText.text = "" + PlayerPrefs.GetInt(save);
+    }
+    public void StoreChestCoin(int min, int max, string save)
+    {
+        int randomCoin = Random.Range(min, max);
+        storeCoinAddText.text = "" + randomCoin;
+        int coin = PlayerPrefs.GetInt("Coin");
+        coin += randomCoin;
+        PlayerPrefs.SetInt("Coin", coin);
+        coinText.text = "" + PlayerPrefs.GetInt(save);
+    }
+    public void StoreChestCrystal(int min, int max, string save)
+    {
+        int randomCrystal = Random.Range(min, max);
+        storeCrystalAddText.text = "" + randomCrystal;
         int crystal = PlayerPrefs.GetInt("Crystal");
         crystal += randomCrystal;
         PlayerPrefs.SetInt("Crystal", crystal);

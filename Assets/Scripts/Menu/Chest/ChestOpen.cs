@@ -25,7 +25,7 @@ public class ChestOpen : MonoBehaviour, IPointerDownHandler
     void Start()
     {
         Debug.Log(PlayerPrefs.GetInt("Coin"));
-        if (PlayerPrefs.GetInt("Coin") >= chestProgress)
+        if (PlayerPrefs.GetInt("Progress") >= chestProgress)
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -40,7 +40,7 @@ public class ChestOpen : MonoBehaviour, IPointerDownHandler
     }
     public void ChestModeOpen()
     {
-        if (gameObject.GetComponent<Image>().color.a > 0.5f && PlayerPrefs.GetInt("Coin") >= chestProgress)
+        if (gameObject.GetComponent<Image>().color.a > 0.5f && PlayerPrefs.GetInt("Progress") >= chestProgress)
         {
             gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0.25f);
 
@@ -48,15 +48,15 @@ public class ChestOpen : MonoBehaviour, IPointerDownHandler
             {
                 case ChestMode.Common:
                     ChestCards.Instance.UpgradeCards(true, false, false);
-                    ChestCards.Instance.Common();
+                    ChestCards.Instance.CommonChest();
                     Items.item.ChestCoin(5, 10, "Coin");
                     Items.item.crystalAddText.gameObject.SetActive(false);
-                    //SaveChestNumber();
+                    SaveChestNumber();
                     break;
                 case ChestMode.Rare:
                     ChestCards.Instance.UpgradeCards(true, true, false);
-                    ChestCards.Instance.Common();
-                    ChestCards.Instance.Rare();
+                    ChestCards.Instance.CommonChest();
+                    ChestCards.Instance.RareChest();
                     Items.item.ChestCoin(15, 20, "Coin");
                     Items.item.crystalAddText.gameObject.SetActive(true);
                     Items.item.ChestCrystal(3, 5, "Crystal");
@@ -64,9 +64,9 @@ public class ChestOpen : MonoBehaviour, IPointerDownHandler
                     break;
                 case ChestMode.Epic:
                     ChestCards.Instance.UpgradeCards(true, true, true);    
-                    ChestCards.Instance.Common();
-                    ChestCards.Instance.Rare();
-                    ChestCards.Instance.Epic();
+                    ChestCards.Instance.CommonChest();
+                    ChestCards.Instance.RareChest();
+                    ChestCards.Instance.EpicChest();
                     Items.item.ChestCoin(25, 40, "Coin");
                     Items.item.crystalAddText.gameObject.SetActive(true);
                     Items.item.ChestCrystal(5, 10, "Crystal");
@@ -76,7 +76,6 @@ public class ChestOpen : MonoBehaviour, IPointerDownHandler
                     break;
             }
         }
-        CardsInfo.cards.panelHolder.GetComponent<PanelSwipe>().enabled = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)

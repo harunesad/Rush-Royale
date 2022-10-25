@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MenuChoose : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class MenuChoose : MonoBehaviour
     }
     public void MenuPass(float posZ)
     {
-        menus.GetComponent<RectTransform>().localPosition = new Vector3(posZ, 0, 0);
+        menus.GetComponent<RectTransform>().DOLocalMove(new Vector3(posZ, 0, 0), 0.4f);
     }
     //public void CardsMenu(float posZ)
     //{
