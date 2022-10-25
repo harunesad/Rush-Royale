@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnSystem : GenericSingleton<SpawnSystem>
+public class SpawnSystem : MonoBehaviour
 {
+    public static SpawnSystem Instance;
     public List<GameObject> soldiers;
     public List<GameObject> spawnPoints;
     public List<GameObject> spawnObj;
     Vector3 pos;
+    private void Awake()
+    {
+        Instance = this;
+    }
     public void ReAttack()
     {
         for (int i = 0; i < soldiers.Count; i++)

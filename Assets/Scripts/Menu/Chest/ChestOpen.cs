@@ -50,8 +50,8 @@ public class ChestOpen : MonoBehaviour, IPointerDownHandler
                     ChestCards.Instance.UpgradeCards(true, false, false);
                     ChestCards.Instance.Common();
                     Items.item.ChestCoin(5, 10, "Coin");
-                    Items.item.chestNumber++;
-                    SaveChestNumber();
+                    Items.item.crystalAddText.gameObject.SetActive(false);
+                    //SaveChestNumber();
                     break;
                 case ChestMode.Rare:
                     ChestCards.Instance.UpgradeCards(true, true, false);

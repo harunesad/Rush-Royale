@@ -51,6 +51,7 @@ public class ButtonSetActive : MonoBehaviour
     {
         ButtonSelect.instance.useButton.SetActive(false);
         ButtonSelect.instance.infoButton.SetActive(false);
+        ButtonSelect.instance.upgradeButton.SetActive(false);
     }
     public void ProgressState()
     {

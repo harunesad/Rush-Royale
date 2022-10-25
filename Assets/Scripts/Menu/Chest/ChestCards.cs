@@ -91,7 +91,7 @@ public class ChestCards : MonoBehaviour
         TextMeshProUGUI cardIncText = cardList.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         cardIncText.text = Random.Range(min, max).ToString();
         //progress.myCountCard += int.Parse(cardIncText.text);
-        for (int i = 0; i < Cards.card.cards.Count; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (card.name == Cards.card.cards[i].name)
             {

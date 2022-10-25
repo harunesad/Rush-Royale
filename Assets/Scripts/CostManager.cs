@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CostManager : GenericSingleton<CostManager>
+public class CostManager : MonoBehaviour
 {
+    public static CostManager Instance;
     public int cost;
     public int costReduce = 10;
 
@@ -15,6 +16,10 @@ public class CostManager : GenericSingleton<CostManager>
 
     public TextMeshProUGUI costText;
     public TextMeshProUGUI costReduceText;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         for (int i = 0; i < soldiers.spawnMonsters.Count; i++)

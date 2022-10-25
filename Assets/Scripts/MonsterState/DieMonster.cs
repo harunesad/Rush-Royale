@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DieMonster : GenericSingleton<DieMonster>
+public class DieMonster : MonoBehaviour
 {
+    public static DieMonster Instance;
     public delegate void BossDie();
     public static event BossDie bossDie;
+    private void Awake()
+    {
+        Instance = this;
+    }
     public void Die(GameObject obj)
     {
         SpawnMonsters.Instance.monsters.Remove(obj);

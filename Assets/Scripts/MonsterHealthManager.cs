@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterHealthManager : GenericSingleton<MonsterHealthManager>
+public class MonsterHealthManager : MonoBehaviour
 {
+    public static MonsterHealthManager Instance;
     public List<float> monsterHealth;
     public List<float> bossHealth;
     [SerializeField] MonsterSoldiers soldiers;
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         for (int i = 0; i < soldiers.spawnMonsters.Count; i++)

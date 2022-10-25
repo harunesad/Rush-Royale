@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class WaveControl : GenericSingleton<WaveControl>
+public class WaveControl : MonoBehaviour
 {
+    public static WaveControl Instance;
     public bool waveFinish = false;
     public TextMeshProUGUI waveText;
     public int wave;
@@ -14,6 +15,10 @@ public class WaveControl : GenericSingleton<WaveControl>
     int coinProgress;
     public int crystal;
     int crystalProgress;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         waveText.text = "" + (wave + 1);

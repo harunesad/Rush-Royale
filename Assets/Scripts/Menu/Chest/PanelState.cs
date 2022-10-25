@@ -19,6 +19,7 @@ public class PanelState : MonoBehaviour
             ButtonSelect.instance.progressText.gameObject.SetActive(true);
             ButtonSelect.instance.useButton.SetActive(false);
             ButtonSelect.instance.infoButton.SetActive(false);
+            ButtonSelect.instance.upgradeButton.SetActive(false);
             ButtonClick.instance.newImage = null;
         }
     }

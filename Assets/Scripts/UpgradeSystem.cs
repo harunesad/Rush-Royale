@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UpgradeSystem : GenericSingleton<UpgradeSystem>
+public class UpgradeSystem : MonoBehaviour 
 {
+    public static UpgradeSystem Instance;
     [SerializeField] PlayerSoldiers soldiers;
     public List<int> upgradeCost;
     public List<TextMeshProUGUI> upgradeCostText;
@@ -13,9 +14,9 @@ public class UpgradeSystem : GenericSingleton<UpgradeSystem>
     public List<float> minus;
     public List<float> plus;
     public List<float> star;
-    public override void Awake()
+    private  void Awake()
     {
-        base.Awake();
+        Instance = this;
         PropertyUpdate(soldiers.firstObj);
         PropertyUpdate(soldiers.secondObj);
         PropertyUpdate(soldiers.thirdObj);
