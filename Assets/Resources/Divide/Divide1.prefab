@@ -231,9 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7445c59702ef03a45a74da48f0d7ee6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 200
-  attackSpeed: 4
-  spawnSpeed: 1
+  attack: 800
+  attackSpeed: 5.76
+  spawnSpeed: 0.64000005
   bullet: {fileID: 4912979821746414824, guid: 2389c3ac1ec279b46b0dde36dbbce47b, type: 3}
 --- !u!114 &-8060741614571873302
 MonoBehaviour:

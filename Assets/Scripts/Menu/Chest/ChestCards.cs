@@ -12,6 +12,7 @@ public class ChestCards : MonoBehaviour
     public List<Image> collectCards;
     public List<Image> collectStoreCards;
     public GameObject chestCardPanel;
+    public GameObject storeChestCardPanel;
     int cardCount;
     private void Awake()
     {
@@ -19,28 +20,28 @@ public class ChestCards : MonoBehaviour
     }
     public void CommonStoreChest()
     {
-        CardType(commonCards, collectStoreCards[0], 10, 15);
+        CardType(commonCards, storeChestCardPanel, collectStoreCards[0], 30, 50);
 
     }
     public void RareStoreChest()
     {
-        CardType(rareCards, collectStoreCards[1], 10, 15);
+        CardType(rareCards, storeChestCardPanel, collectStoreCards[1], 20, 30);
     }
     public void EpicStoreChest()
     {
-        CardType(epicCards, collectStoreCards[2], 10, 15);
+        CardType(epicCards, storeChestCardPanel, collectStoreCards[2], 10, 15);
     }
     public void CommonChest()
     {
-        CardType(commonCards, collectCards[0], 10, 15);
+        CardType(commonCards, chestCardPanel, collectCards[0], 10, 15);
     }
     public void RareChest()
     {
-        CardType(rareCards, collectCards[1], 5, 10);
+        CardType(rareCards, chestCardPanel, collectCards[1], 5, 10);
     }
     public void EpicChest()
     {
-        CardType(epicCards, collectCards[2], 1, 3);
+        CardType(epicCards, chestCardPanel, collectCards[2], 1, 3);
     }
     public void UpgradeCards(bool common, bool rare, bool epic)
     {
@@ -59,7 +60,7 @@ public class ChestCards : MonoBehaviour
         collectStore.gameObject.SetActive(cardState);
         collectStore.transform.GetChild(0).gameObject.SetActive(cardState);
     }
-    void CardType(List<Image> type, Image collect, int min, int max)
+    void CardType(List<Image> type, GameObject panel, Image collect, int min, int max)
     {
         ButtonClick.instance.so = SaveManager.Load();
         int randomCard = Random.Range(0, type.Count);
@@ -68,7 +69,7 @@ public class ChestCards : MonoBehaviour
         collect.name = card.name;
         Image progress = collect.transform.GetChild(0).GetComponent<Image>();
         progress.fillAmount = card.transform.GetChild(2).GetComponent<Image>().fillAmount;
-        chestCardPanel.SetActive(true);
+        panel.SetActive(true);
         NewProgress(card, collect, min, max);
     }
     void NewProgress(Image card, Image cardList, int min, int max)

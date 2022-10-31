@@ -31,25 +31,25 @@ public class StoreChestOpen : MonoBehaviour,IPointerDownHandler
             {
                 case ChestMode.Common:
                     ChestCards.Instance.UpgradeStoreCards(true, false, false);
-                    ChestCards.Instance.CommonChest();
+                    ChestCards.Instance.CommonStoreChest();
                     Items.item.StoreChestCoin(50, 100, "Coin");
-                    Items.item.crystalAddText.gameObject.SetActive(false);
+                    Items.item.storeCrystalAddText.gameObject.SetActive(false);
                     break;
                 case ChestMode.Rare:
                     ChestCards.Instance.UpgradeStoreCards(true, true, false);
-                    ChestCards.Instance.CommonChest();
-                    ChestCards.Instance.RareChest();
+                    ChestCards.Instance.CommonStoreChest();
+                    ChestCards.Instance.RareStoreChest();
                     Items.item.StoreChestCoin(150, 200, "Coin");
-                    Items.item.crystalAddText.gameObject.SetActive(true);
+                    Items.item.storeCrystalAddText.gameObject.SetActive(true);
                     Items.item.StoreChestCrystal(15, 25, "Crystal");
                     break;
                 case ChestMode.Epic:
                     ChestCards.Instance.UpgradeStoreCards(true, true, true);
-                    ChestCards.Instance.CommonChest();
-                    ChestCards.Instance.RareChest();
-                    ChestCards.Instance.EpicChest();
+                    ChestCards.Instance.CommonStoreChest();
+                    ChestCards.Instance.RareStoreChest();
+                    ChestCards.Instance.EpicStoreChest();
                     Items.item.StoreChestCoin(250, 400, "Coin");
-                    Items.item.crystalAddText.gameObject.SetActive(true);
+                    Items.item.storeCrystalAddText.gameObject.SetActive(true);
                     Items.item.StoreChestCrystal(35, 50, "Crystal");
                     break;
                 default:
@@ -60,5 +60,6 @@ public class StoreChestOpen : MonoBehaviour,IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         ChestModeOpen();
+        Debug.Log("saddsa");
     }
 }

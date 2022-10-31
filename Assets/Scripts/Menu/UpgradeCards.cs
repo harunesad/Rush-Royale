@@ -55,7 +55,7 @@ public class UpgradeCards : MonoBehaviour
         ButtonClick.instance.so.levelCost[cardIndex] = ButtonClick.instance.so.levelCost[cardIndex] * 2;
         ButtonClick.instance.so.levelNumber[cardIndex]++;
 
-        CardsInfo.cards.progress.upgradeCost *= ButtonClick.instance.so.levelCost[cardIndex];
+        //CardsInfo.cards.progress.upgradeCost *= ButtonClick.instance.so.levelCost[cardIndex];
         CardsInfo.cards.attackText.text = "" + CardsInfo.cards.bulletSpawn.attack;
         CardsInfo.cards.attackSpeedText.text = "" + CardsInfo.cards.bulletSpawn.attackSpeed;
         CardsInfo.cards.spawnSpeedText.text = "" + CardsInfo.cards.bulletSpawn.spawnSpeed;
@@ -65,7 +65,7 @@ public class UpgradeCards : MonoBehaviour
         //spawnSpeedIncText.text = "" + Mathf.Abs(spawnSpeed - lastSpawnSpeed);
 
         cardLevel.text = "" + ButtonClick.instance.so.levelNumber[cardIndex];
-        cardCost.text = "" + ButtonClick.instance.so.levelCost[cardIndex] * 100;
+        cardCost.text = "" + ButtonClick.instance.so.levelCost[cardIndex] * CardsInfo.cards.progress.upgradeCost;
 
         upgradeButton.GetComponent<Button>().interactable = false;
         Image progress = Cards.card.cards[cardIndex].transform.GetChild(2).GetComponent<Image>();

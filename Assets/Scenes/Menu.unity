@@ -6137,7 +6137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &405996109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16848,6 +16848,7 @@ MonoBehaviour:
   - {fileID: 1250557991}
   - {fileID: 1809235946}
   chestCardPanel: {fileID: 1628559648}
+  storeChestCardPanel: {fileID: 937044937}
 --- !u!4 &1185738619
 Transform:
   m_ObjectHideFlags: 0
@@ -18329,7 +18330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storeChestMode: 0
-  storeChestCrystal: 100
+  storeChestCrystal: -1
 --- !u!1 &1349954513
 GameObject:
   m_ObjectHideFlags: 0
@@ -21629,6 +21630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3938402a2a4611d4eb4de3d8d87c2abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveFactorX: 0
 --- !u!114 &1657453437
 MonoBehaviour:
   m_ObjectHideFlags: 0

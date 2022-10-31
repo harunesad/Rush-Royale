@@ -45,10 +45,21 @@ public class CardsInfo : MonoBehaviour
         if (ButtonSelect.instance.upgradeButton.activeSelf)
         {
             GameObject parent = upgradeCostText.transform.parent.gameObject;
-            //parent.gameObject.SetActive(true);
             parent.GetComponent<Button>().interactable = true;
+            UpgradeCards.instance.attackIncText.gameObject.SetActive(true);
+            UpgradeCards.instance.spawnSpeedIncText.gameObject.SetActive(true);
+            UpgradeCards.instance.attackSpeedIncText.gameObject.SetActive(true);
             Debug.Log(parent.name);
             UpgradeCards.instance.IncreaseShow(parentObj);
+        }
+        else
+        {
+            GameObject parent = upgradeCostText.transform.parent.gameObject;
+            parent.GetComponent<Button>().interactable = false;
+            UpgradeCards.instance.attackIncText.gameObject.SetActive(false);
+            UpgradeCards.instance.spawnSpeedIncText.gameObject.SetActive(false);
+            UpgradeCards.instance.attackSpeedIncText.gameObject.SetActive(false);
+            Debug.Log(parent.name);
         }
         ButtonState();
 
@@ -56,7 +67,7 @@ public class CardsInfo : MonoBehaviour
 
         sprite.GetComponent<Image>().sprite = parentObj.GetComponent<Image>().sprite;
         soldierNameText.text = parentObj.name;
-        upgradeCostText.text = "" + progress.upgradeCost;
+        //upgradeCostText.text = "" + progress.upgradeCost;
         for (int i = 0; i < 4; i++)
         {
             if (Cards.card.cards[i].name == parentObj.name)
@@ -64,9 +75,10 @@ public class CardsInfo : MonoBehaviour
                 cardIndex = i;
             }
         }
-        GameObject upgrade = parentObj.transform.GetChild(4).gameObject;
-        TextMeshProUGUI upgradeText = upgrade.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        upgradeText.text = "" + ButtonClick.instance.so.levelCost[cardIndex] * 100;
+        //GameObject upgrade = parentObj.transform.GetChild(4).gameObject;
+        //TextMeshProUGUI upgradeText = upgrade.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        //upgradeText.text = "" + ButtonClick.instance.so.levelCost[cardIndex] * 100;
+        upgradeCostText.text = "" + progress.upgradeCost * ButtonClick.instance.so.levelCost[cardIndex];
     }
     public void LevelClick()
     {
@@ -113,6 +125,9 @@ public class CardsInfo : MonoBehaviour
         panelHolder.GetComponent<PanelSwipe>().enabled = true;
         ýnfoPanel.SetActive(false);
         ButtonState();
+        GameObject upgrade = parentObj.transform.GetChild(4).gameObject;
+        TextMeshProUGUI upgradeText = upgrade.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        upgradeText.text = "" + ButtonClick.instance.so.levelCost[cardIndex] * 100;
 
         levelNumber = 1;
         mergeRateNumber = 1;
@@ -121,6 +136,7 @@ public class CardsInfo : MonoBehaviour
         mergeText.text = "Merge Rate " + mergeRateNumber;
 
         GameObject parent = upgradeCostText.transform.parent.gameObject;
+
         //parent.gameObject.SetActive(true);
         parent.GetComponent<Button>().interactable = false;
     }
